@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employers Management - Hiraya Pursuits</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="adminconsole.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+</head>
+<body class="bg-gray-50 text-gray-700 font-sans">
+
+    <!-- MOBILE HEADER - LOGO CHANGED -->
+    <div class="lg:hidden flex items-center justify-between bg-white p-4 shadow-sm">
+        <div class="flex items-center gap-2">
+            <!-- CHANGED: Logo image instead of colored circle -->
+            <img src="Hiraya2.png" alt="Hiraya Pursuits" class="w-12 h-12 object-contain">
+            <span class="font-bold text-red-900 text-sm">HIRAYA PURSUITS</span>
+        </div>
+        <button id="menuBtn" class="text-gray-500 text-2xl focus:outline-none">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </div>
+
+    <div class="flex">
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out lg:static lg:h-screen">
+            <div class="p-6">
+                <div class="flex items-center gap-3 mb-8">
+                    <!-- CHANGED: Logo image instead of colored circle with icon -->
+                    <img src="Hiraya2.png" alt="Hiraya Pursuits" class="w-12 h-12 object-contain rounded-full">
+                    <div>
+                        <h1 class="font-bold text-red-900 leading-none">HIRAYA PURSUITS</h1>
+                        <p class="text-[10px] uppercase tracking-widest text-gray-400">Admin Console</p>
+                    </div>
+                </div>
+
+                <nav class="space-y-1">
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-red-50 hover:text-red-700 rounded-lg transition">
+                        <i class="fa-solid fa-table-columns w-5"></i> Dashboard
+                    </a>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-red-50 hover:text-red-700 rounded-lg transition">
+                        <i class="fa-solid fa-users w-5"></i> Applicants
+                    </a>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 bg-red-50 text-red-700 font-medium rounded-lg transition">
+                        <i class="fa-solid fa-building w-5"></i> Employers
+                    </a>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-red-50 hover:text-red-700 rounded-lg transition">
+                        <i class="fa-solid fa-briefcase w-5"></i> Jobs
+                    </a>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-red-50 hover:text-red-700 rounded-lg transition">
+                        <i class="fa-solid fa-user-tag w-5"></i> Roles
+                    </a>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-red-50 hover:text-red-700 rounded-lg transition">
+                        <i class="fa-solid fa-user-gear w-5"></i> Users
+                    </a>
+                </nav>
+
+                <div class="mt-10">
+                    <p class="px-4 text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">System</p>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-gray-100 rounded-lg transition">
+                        <i class="fa-solid fa-gear w-5"></i> Settings
+                    </a>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-gray-100 rounded-lg transition">
+                        <i class="fa-solid fa-right-from-bracket w-5"></i> Logout
+                    </a>
+                </div>
+            </div>
+            
+            <div class="absolute bottom-0 w-full p-4 border-t border-gray-100">
+                <div class="flex items-center gap-3 p-2 bg-gray-50 rounded-xl">
+                    <div class="w-10 h-10 bg-rose-200 rounded-full overflow-hidden">
+                        <img src="https://ui-avatars.com/api/?name=Alex+Hiraya&background=fecdd3" alt="User">
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold">Alex Hiraya</p>
+                        <p class="text-[10px] text-gray-500">Super Admin</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="flex-1 h-screen overflow-y-auto">
+            <div class="p-4 lg:p-10 max-w-7xl mx-auto">
+                <div class="mb-8">
+                    <h2 class="text-3xl font-bold text-gray-800">Employers Management</h2>
+                    <p class="text-gray-500">View, verify, and manage all company accounts on the platform.</p>
+                </div>
+
+                <div class="sticky top-0 lg:top-0 z-20 bg-gray-50 py-4 mb-4">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4">
+                            <div class="w-12 h-12 bg-green-50 text-green-500 rounded-xl flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-shield-check"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Verified Employers</p>
+                                <p class="text-2xl font-bold">92</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4">
+                            <div class="w-12 h-12 bg-orange-50 text-orange-500 rounded-xl flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Pending Approvals</p>
+                                <p class="text-2xl font-bold">18</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4">
+                            <div class="w-12 h-12 bg-red-50 text-red-500 rounded-xl flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Recent Rejections</p>
+                                <p class="text-2xl font-bold">4</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-gray-50 border-b border-gray-100">
+                                <tr>
+                                    <th class="px-6 py-4 text-[10px] uppercase font-bold text-gray-400">Company Name</th>
+                                    <th class="px-6 py-4 text-[10px] uppercase font-bold text-gray-400">Contact Email</th>
+                                    <th class="px-6 py-4 text-[10px] uppercase font-bold text-gray-400 text-center">Posted Jobs</th>
+                                    <th class="px-6 py-4 text-[10px] uppercase font-bold text-gray-400">Verification Status</th>
+                                    <th class="px-6 py-4 text-[10px] uppercase font-bold text-gray-400 text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100">
+                                <tr class="hover:bg-gray-50 transition">
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xs">TF</div>
+                                            <span class="font-bold text-sm">TechFlow Solutions</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">contact@techflow.com</td>
+                                    <td class="px-6 py-4 text-sm font-bold text-center">12</td>
+                                    <td class="px-6 py-4">
+                                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-[10px] font-bold">Verified</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-right space-x-2">
+                                        <button class="text-gray-400 hover:text-green-600"><i class="fa-solid fa-circle-check"></i></button>
+                                        <button class="text-gray-400 hover:text-blue-600"><i class="fa-solid fa-pen"></i></button>
+                                        <button class="text-gray-400 hover:text-red-600"><i class="fa-solid fa-trash-can"></i></button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition">
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-xs">CM</div>
+                                            <span class="font-bold text-sm">Creative Minds Agency</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">hello@creativeminds.io</td>
+                                    <td class="px-6 py-4 text-sm font-bold text-center">5</td>
+                                    <td class="px-6 py-4">
+                                        <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-[10px] font-bold">Pending</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-right space-x-2">
+                                        <button class="text-gray-400 hover:text-green-600"><i class="fa-solid fa-circle-check"></i></button>
+                                        <button class="text-gray-400 hover:text-blue-600"><i class="fa-solid fa-pen"></i></button>
+                                        <button class="text-gray-400 hover:text-red-600"><i class="fa-solid fa-trash-can"></i></button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition">
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-xs">GL</div>
+                                            <span class="font-bold text-sm">Global Logistics Co.</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">info@globallogistics.com</td>
+                                    <td class="px-6 py-4 text-sm font-bold text-center">24</td>
+                                    <td class="px-6 py-4">
+                                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-[10px] font-bold">Verified</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-right space-x-2">
+                                        <button class="text-gray-400 hover:text-green-600"><i class="fa-solid fa-circle-check"></i></button>
+                                        <button class="text-gray-400 hover:text-blue-600"><i class="fa-solid fa-pen"></i></button>
+                                        <button class="text-gray-400 hover:text-red-600"><i class="fa-solid fa-trash-can"></i></button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition">
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-lg bg-red-50 text-red-600 flex items-center justify-center font-bold text-xs">SH</div>
+                                            <span class="font-bold text-sm">Startup Hub</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">admin@startuphub.net</td>
+                                    <td class="px-6 py-4 text-sm font-bold text-center">3</td>
+                                    <td class="px-6 py-4">
+                                        <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-[10px] font-bold">Rejected</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-right space-x-2">
+                                        <button class="text-gray-400 hover:text-green-600"><i class="fa-solid fa-circle-check"></i></button>
+                                        <button class="text-gray-400 hover:text-blue-600"><i class="fa-solid fa-pen"></i></button>
+                                        <button class="text-gray-400 hover:text-red-600"><i class="fa-solid fa-trash-can"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="p-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <p class="text-sm text-gray-500">Showing <span class="font-bold">4</span> of <span class="font-bold">128</span> employers</p>
+                        <div class="flex items-center gap-2">
+                            <button class="px-3 py-1 border rounded hover:bg-gray-50"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+                            <button class="px-3 py-1 bg-red-800 text-white rounded font-bold text-sm">1</button>
+                            <button class="px-3 py-1 border rounded hover:bg-gray-50 text-sm">2</button>
+                            <button class="px-3 py-1 border rounded hover:bg-gray-50 text-sm">3</button>
+                            <span class="px-2">...</span>
+                            <button class="px-3 py-1 border rounded hover:bg-gray-50 text-sm">32</button>
+                            <button class="px-3 py-1 border rounded hover:bg-gray-50"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebar = document.getElementById('sidebar');
+
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('-translate-x-full');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth < 1024 && !sidebar.contains(e.target) && !menuBtn.contains(e.target)) {
+                sidebar.classList.add('-translate-x-full');
+            }
+        });
+    </script>
+</body>
+</html>
