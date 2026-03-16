@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Applications | HirayaCareer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+<div class="flex flex-col md:flex-row min-h-screen">
+  
+  <aside class="w-full md:w-64 bg-[#800000] text-white md:h-screen sticky top-0 flex flex-col justify-between p-6">
+    <div>
+      <div class="flex items-center gap-2 mb-10">
+        <image src="Hiraya.png" class= "w-14 h-14">
+        <h1 class="text-xl font-bold tracking-tight">Hiraya Pursuit</h1>
+      </div>
+
+      <nav class="space-y-1 text-sm">
+        <div class="flex items-center gap-3 p-3 opacity-60 hover:bg-white/10 rounded-lg cursor-pointer transition">
+            <span>⊞</span> Dashboard
+        </div>
+        <div class="flex items-center gap-3 p-3 opacity-60 hover:bg-white/10 rounded-lg cursor-pointer transition">
+            <span>💼</span> Jobs
+        </div>
+        <div class="flex items-center gap-3 p-3 bg-white/10 rounded-lg font-semibold cursor-pointer">
+            <span>📝</span> My Applications
+        </div>
+        <div class="flex items-center gap-3 p-3 opacity-60 hover:bg-white/10 rounded-lg cursor-pointer transition">
+            <span>💬</span> Messages
+        </div>
+        <div class="flex items-center gap-3 p-3 opacity-60 hover:bg-white/10 rounded-lg cursor-pointer transition">
+            <span>👤</span> Profile
+        </div>
+        <div class="flex items-center gap-3 p-3 opacity-60 hover:bg-white/10 rounded-lg cursor-pointer transition">
+            <span>⚙️</span> Settings
+        </div>
+      </nav>
+    </div>
+
+    <div class="mt-10 pt-6 border-t border-white/20 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="https://ui-avatars.com/api/?name=John+Mark+Acebedo&background=FFC0CB&color=800000" class="w-10 h-10 rounded-full border-2 border-white/20" alt="Avatar">
+        <div>
+          <p class="text-xs font-bold text-white">John Mark Acebedo</p>
+          <p class="text-[10px] text-white/60">acebedojm.com</p>
+        </div>
+      </div>
+      <button class="text-white/60 hover:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+        </svg>
+      </button>
+    </div>
+  </aside>
+
+  <main class="flex-1 p-6 md:p-10 max-w-7xl mx-auto w-full">
+    
+    <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+      <div>
+        <h2 class="text-3xl font-extrabold text-slate-800">My Applications</h2>
+        <p class="text-gray-400 text-sm">Track and manage your ongoing job applications</p>
+      </div>
+      <div class="flex items-center gap-3 transition flex items-center">
+        <div class="max-w-6xl mx-auto mb-10 flex gap-4">
+      <input type="text" placeholder="Search for jobs..." class="flex-1 px-4 py-3 rounded-xl border border-gray-200 outline-none shadow-sm">
+       <button class="bg-[#800000] text-white px-4 py-2 rounded-lg font-bold text-sm hover:bg-[#600000] transition flex items-center gap-2">
+        <span>+</span>New Application</button>
+    </div>
+      </div>
+        </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+      <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+        <div class="flex justify-between items-start">
+            <p class="text-sm font-medium text-gray-500">Total Applications</p>
+            <div class="bg-blue-50 p-2 rounded-lg text-blue-500 text-xs">📄</div>
+        </div>
+        <h3 class="text-3xl font-bold mt-2">42</h3>
+      </div>
+      <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+        <div class="flex justify-between items-start">
+            <p class="text-sm font-medium text-gray-500">Under Review</p>
+            <div class="bg-blue-50 p-2 rounded-lg text-blue-500 text-xs">👁️</div>
+        </div>
+        <h3 class="text-3xl font-bold mt-2">12</h3>
+      </div>
+      <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+        <div class="flex justify-between items-start">
+            <p class="text-sm font-medium text-gray-500">Interviews</p>
+            <div class="bg-purple-50 p-2 rounded-lg text-purple-500 text-xs">👥</div>
+        </div>
+        <h3 class="text-3xl font-bold mt-2">5</h3>
+      </div>
+      <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+        <div class="flex justify-between items-start">
+            <p class="text-sm font-medium text-gray-500">Offered</p>
+            <div class="bg-green-50 p-2 rounded-lg text-green-500 text-xs">✅</div>
+        </div>
+        <h3 class="text-3xl font-bold mt-2">2</h3>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+      <div class="p-6 flex justify-between items-center border-b border-gray-50">
+        <h4 class="font-bold text-slate-800">Recent Activity</h4>
+        <button class="text-gray-400 hover:text-gray-600">⊑</button>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead class="bg-gray-50/50 text-gray-400 text-[10px] uppercase tracking-wider">
+            <tr>
+              <th class="px-6 py-4 font-semibold">Job Title</th>
+              <th class="px-6 py-4 font-semibold">Company</th>
+              <th class="px-6 py-4 font-semibold">Date Applied</th>
+              <th class="px-6 py-4 font-semibold">Status</th>
+              <th class="px-6 py-4 font-semibold text-right">Action</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-50">
+            <tr class="hover:bg-gray-50/50 transition cursor-pointer">
+              <td class="px-6 py-4">
+                <p class="text-sm font-bold text-slate-800">Senior Product Designer</p>
+                <p class="text-[11px] text-gray-400">Full-time • Remote</p>
+              </td>
+              <td class="px-6 py-4">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-[10px] font-bold">TF</div>
+                    <span class="text-sm text-gray-600">TechFlow Inc.</span>
+                </div>
+              </td>
+              <td class="px-6 py-4 text-sm text-gray-500">Oct 24, 2023</td>
+              <td class="px-6 py-4">
+                <span class="px-3 py-1 bg-blue-50 text-blue-500 text-[10px] font-bold rounded-full">In Review</span>
+              </td>
+              <td class="px-6 py-4 text-right">
+                <button class="text-[#800000] text-sm font-bold hover:underline">View Details</button>
+              </td>
+            </tr>
+            <tr class="hover:bg-gray-50/50 transition">
+              <td class="px-6 py-4">
+                <p class="text-sm font-bold text-slate-800">UX Researcher</p>
+                <p class="text-[11px] text-gray-400">Contract • Hybrid</p>
+              </td>
+              <td class="px-6 py-4">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center text-[10px] font-bold">IV</div>
+                    <span class="text-sm text-gray-600">InnoVibe</span>
+                </div>
+              </td>
+              <td class="px-6 py-4 text-sm text-gray-500">Oct 20, 2023</td>
+              <td class="px-6 py-4">
+                <span class="px-3 py-1 bg-purple-50 text-purple-500 text-[10px] font-bold rounded-full">Interviewing</span>
+              </td>
+              <td class="px-6 py-4 text-right">
+                <button class="text-[#800000] text-sm font-bold hover:underline">View Details</button>
+              </td>
+            </tr>
+            <tr class="hover:bg-gray-50/50 transition">
+              <td class="px-6 py-4">
+                <p class="text-sm font-bold text-slate-800">Product Manager</p>
+                <p class="text-[11px] text-gray-400">Full-time • On-site</p>
+              </td>
+              <td class="px-6 py-4">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-gray-100 text-gray-600 flex items-center justify-center text-[10px] font-bold">DS</div>
+                    <span class="text-sm text-gray-600">DataSync</span>
+                </div>
+              </td>
+              <td class="px-6 py-4 text-sm text-gray-500">Oct 15, 2023</td>
+              <td class="px-6 py-4">
+                <span class="px-3 py-1 bg-gray-50 text-gray-400 text-[10px] font-bold rounded-full">Declined</span>
+              </td>
+              <td class="px-6 py-4 text-right">
+                <button class="text-[#800000] text-sm font-bold hover:underline">View Details</button>
+              </td>
+            </tr>
+            <tr class="hover:bg-gray-50/50 transition">
+              <td class="px-6 py-4">
+                <p class="text-sm font-bold text-slate-800">Lead Designer</p>
+                <p class="text-[11px] text-gray-400">Full-time • Remote</p>
+              </td>
+              <td class="px-6 py-4">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-green-100 text-green-600 flex items-center justify-center text-[10px] font-bold">CC</div>
+                    <span class="text-sm text-gray-600">CreativeCo</span>
+                </div>
+              </td>
+              <td class="px-6 py-4 text-sm text-gray-500">Oct 10, 2023</td>
+              <td class="px-6 py-4">
+                <span class="px-3 py-1 bg-green-50 text-green-500 text-[10px] font-bold rounded-full">Offered</span>
+              </td>
+              <td class="px-6 py-4 text-right">
+                <button class="text-[#800000] text-sm font-bold hover:underline">View Details</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="p-4 border-t border-gray-50 flex items-center justify-between">
+        <p class="text-xs text-gray-400 font-medium">Showing 5 of 42 applications</p>
+        <div class="flex items-center gap-2">
+            <button class="px-3 py-1.5 text-xs font-semibold text-gray-500 hover:bg-gray-50 rounded-lg">Previous</button>
+            <button class="w-8 h-8 bg-[#800000] text-white rounded-lg text-xs font-bold">1</button>
+            <button class="w-8 h-8 text-gray-500 hover:bg-gray-50 rounded-lg text-xs font-semibold">2</button>
+            <button class="w-8 h-8 text-gray-500 hover:bg-gray-50 rounded-lg text-xs font-semibold">3</button>
+            <button class="px-3 py-1.5 text-xs font-semibold text-gray-500 hover:bg-gray-50 rounded-lg">Next</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>
