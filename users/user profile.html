@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | HirayaCareer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+<div class="flex flex-col md:flex-row min-h-screen">
+  
+  <aside class="w-full md:w-64 bg-[#800000] text-white md:h-screen sticky top-0 flex flex-col justify-between p-6">
+    <div>
+      <div class="flex items-center gap-2 mb-10">
+        <image src="Hiraya.png" class= "w-14 h-14">
+        <h1 class="text-xl font-bold tracking-tight">Hiraya Pursuit</h1>
+      </div>
+
+      <nav class="space-y-1 text-sm">
+        <div class="flex items-center gap-3 p-3 opacity-60 hover:bg-white/10 rounded-lg cursor-pointer transition">
+            <span>⊞</span> Dashboard
+        </div>
+        <div class="flex items-center gap-3 p-3 opacity-60 hover:bg-white/10 rounded-lg cursor-pointer transition">
+            <span>💼</span> Jobs
+        </div>
+        <div class="flex items-center gap-3 p-3 opacity-60 hover:bg-white/10 rounded-lg cursor-pointer transition">
+            <span>📝</span> My Applications
+        </div>
+        <div class="flex items-center gap-3 p-3 opacity-60 hover:bg-white/10 rounded-lg cursor-pointer transition">
+            <span>💬</span> Messages
+        </div>
+        <div class="flex items-center gap-3 p-3 bg-white/10 rounded-lg font-semibold cursor-pointer">
+            <span>👤</span> Profile
+        </div>
+        <div class="flex items-center gap-3 p-3 opacity-60 hover:bg-white/10 rounded-lg cursor-pointer transition">
+            <span>⚙️</span> Settings
+        </div>
+      </nav>
+    </div>
+
+    <div class="mt-10 pt-6 border-t border-white/20 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="jmpfp.jpg" class="w-10 h-10 rounded-full border-2 border-white/20" alt="Avatar">
+        <div>
+          <p class="text-xs font-bold text-white">John Mark Acebedo</p>
+          <p class="text-[10px] text-white/60">acebedojm.com</p>
+        </div>
+      </div>
+      <button class="text-white/60 hover:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+        </svg>
+      </button>
+    </div>
+  </aside>
+
+  <main class="flex-1 p-6 md:p-10 max-w-6xl mx-auto w-full space-y-6">
+    
+    <div class="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
+        <div class="h-32 bg-gradient-to-r from-[#800000] to-[#b30000]"></div>
+        <div class="px-8 pb-8 flex flex-col md:flex-row items-end md:items-center gap-6 -mt-12">
+            <div>
+                <img src="jmpfp.jpg" class="w-32 h-32 rounded-3xl border-4 border-white shadow-sm object-cover" alt="Profile Picture">
+            </div>
+            <div class="flex-1 pt-12 md:pt-0">
+                <h2 class="text-2xl font-bold text-slate-800 leading-tight">John Mark Acebedo</h2>
+                <p class="text-[#800000] font-semibold text-sm">Senior Product Designer</p>
+                <div class="flex items-center gap-1 text-gray-400 text-xs mt-1">
+                    <span>📍</span> Tondo, Manila Philippines
+                </div>
+            </div>
+            <button class="bg-[#800000] text-white px-6 py-2 rounded-xl font-bold text-sm hover:bg-[#600000] transition flex items-center gap-2">
+                <span>✏️</span> Edit Profile
+            </button>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <div class="lg:col-span-2 space-y-6">
+            
+            <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
+                <div class="flex items-center gap-2 mb-4 text-slate-800">
+                    <span class="text-xl">👤</span>
+                    <h3 class="font-bold">About Me</h3>
+                </div>
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    Passionate Senior Product Designer with over 8 years of experience in creating user-centric digital products. Specialized in design systems, mobile-first experiences, and cross-functional leadership. I thrive at the intersection of user needs and business goals, turning complex problems into intuitive solutions.
+                </p>
+            </div>
+
+            <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
+                <div class="flex justify-between items-center mb-6">
+                    <div class="flex items-center gap-2 text-slate-800">
+                        <span class="text-xl">💼</span>
+                        <h3 class="font-bold">Work Experience</h3>
+                    </div>
+                    <button class="text-[#800000] text-xs font-bold hover:underline">Add Experience</button>
+                </div>
+
+                <div class="space-y-8">
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 font-bold text-xs flex-shrink-0">TF</div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="text-sm font-bold text-slate-800">Senior Product Designer</h4>
+                                    <p class="text-xs text-gray-400 font-medium">TechFlow Inc. • Full-time</p>
+                                    <p class="text-[10px] text-gray-300 font-bold mt-1 uppercase">Jan 2021 - Present • 3 yrs 4 mos</p>
+                                </div>
+                                <span class="bg-red-50 text-red-500 text-[10px] font-bold px-2 py-1 rounded-lg">Present</span>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-3 leading-relaxed">
+                                Leading the redesign of the core SaaS platform, resulting in a 40% increase in user retention. Established and maintained the company's first comprehensive design system.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center text-gray-400 font-bold text-xs flex-shrink-0">CL</div>
+                        <div class="flex-1 border-t border-gray-50 pt-8">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="text-sm font-bold text-slate-800">Product Designer</h4>
+                                    <p class="text-xs text-gray-400 font-medium">Creative Logic • Full-time</p>
+                                    <p class="text-[10px] text-gray-300 font-bold mt-1 uppercase">Jun 2017 - Dec 2020 • 3 yrs 7 mos</p>
+                                </div>
+                                <span class="bg-gray-50 text-gray-400 text-[10px] font-bold px-2 py-1 rounded-lg">Past</span>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-3 leading-relaxed">
+                                Collaborated with engineering teams to deliver high-fidelity prototypes and final UI designs for mobile and web applications.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-6">
+            
+            <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
+                <div class="flex items-center gap-2 mb-6 text-slate-800">
+                    <span class="text-xl">🎯</span>
+                    <h3 class="font-bold">Skills</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-[#800000] text-white px-3 py-1.5 rounded-lg text-[10px] font-bold">Product Design</span>
+                    <span class="bg-red-50 text-red-800 px-3 py-1.5 rounded-lg text-[10px] font-bold">UI/UX</span>
+                    <span class="bg-red-50 text-red-800 px-3 py-1.5 rounded-lg text-[10px] font-bold">Figma</span>
+                    <span class="bg-red-50 text-red-800 px-3 py-1.5 rounded-lg text-[10px] font-bold">Design Systems</span>
+                    <span class="bg-red-50 text-red-800 px-3 py-1.5 rounded-lg text-[10px] font-bold">Prototyping</span>
+                    <span class="bg-red-50 text-red-800 px-3 py-1.5 rounded-lg text-[10px] font-bold">User Research</span>
+                    <span class="bg-red-50 text-red-800 px-3 py-1.5 rounded-lg text-[10px] font-bold">React</span>
+                    <span class="bg-red-50 text-red-800 px-3 py-1.5 rounded-lg text-[10px] font-bold">Accessibility</span>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
+                <div class="flex items-center gap-2 mb-6 text-slate-800">
+                    <span class="text-xl">📇</span>
+                    <h3 class="font-bold">Contact Info</h3>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center text-xs">✉️</div>
+                        <div>
+                            <p class="text-[10px] text-gray-400 font-bold uppercase">Email</p>
+                            <p class="text-xs font-bold text-slate-800">acebedojm@design.com</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center text-xs">📞</div>
+                        <div>
+                            <p class="text-[10px] text-gray-400 font-bold uppercase">Phone</p>
+                            <p class="text-xs font-bold text-slate-800">+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center text-xs">📍</div>
+                        <div>
+                            <p class="text-[10px] text-gray-400 font-bold uppercase">Address</p>
+                            <p class="text-xs font-bold text-slate-800">Tondo Manila, Philippines</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>
