@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Applicants Dashboard</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body class="bg-gray-100 font-sans">
+
+<div class="flex min-h-screen">
+
+<!-- SIDEBAR -->
+<div id="sidebar" class="bg-white w-64 shadow-md flex flex-col justify-between hidden md:flex">
+
+<div>
+
+<!-- LOGO -->
+<div class="p-6 flex items-center gap-3">
+
+<img src="Hiraya2.png" alt="Hiraya Logo" class="w-12 h-12 object-contain">
+
+<div>
+<p class="font-bold text-red-900 text-s">HIRAYA PURSUITS</p>
+<p class="text-xs text-gray-400">ADMIN CONSOLE</p>
+</div>
+
+</div>
+
+<!-- MAIN NAV -->
+<nav class="mt-5">
+
+<a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-red-50 hover:text-red-700 rounded-lg transition">
+                        <i class="fa-solid fa-table-columns w-5"></i> Dashboard
+                    </a>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-red-50 hover:text-red-700 rounded-lg transition">
+                        <i class="fa-solid fa-users w-5"></i> Applicants
+                    </a>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 bg-red-50 text-red-700 font-medium rounded-lg transition">
+                        <i class="fa-solid fa-building w-5"></i> Employers
+                    </a>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-red-50 hover:text-red-700 rounded-lg transition">
+                        <i class="fa-solid fa-briefcase w-5"></i> Jobs
+                    </a>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-red-50 hover:text-red-700 rounded-lg transition">
+                        <i class="fa-solid fa-user-tag w-5"></i> Roles
+                    </a>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-red-50 hover:text-red-700 rounded-lg transition">
+                        <i class="fa-solid fa-user-gear w-5"></i> Users
+                    </a>
+</a>
+
+</nav>
+
+<!-- SYSTEM SECTION -->
+<div class="mt-6">
+
+<p class="px-6 text-xs text-gray-400 uppercase mb-2">
+System
+</p>
+
+<a class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-100">
+<i class="fa fa-gear mr-3"></i> Settings
+</a>
+
+<a class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-100">
+<i class="fa fa-right-from-bracket mr-3"></i> Logout
+</a>
+
+</div>
+
+</div>
+
+<!-- USER PROFILE -->
+<div class="p-4 border-t flex items-center gap-3">
+
+<img src="https://i.pravatar.cc/40" class="w-10 h-10 rounded-full">
+
+<div class="text-sm">
+<p class="font-semibold">Alex Hiraya</p>
+<p class="text-gray-400 text-xs">Super Admin</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="flex-1">
+
+<!-- TOP BAR -->
+<div class="bg-white shadow p-4 flex justify-between items-center">
+
+<div class="flex items-center gap-4">
+
+<button onclick="toggleSidebar()" class="md:hidden text-gray-600">
+<i class="fa fa-bars"></i>
+</button>
+
+<h1 class="font-semibold text-lg">Applicants</h1>
+
+</div>
+
+<div class="flex items-center gap-4">
+
+<input type="text" placeholder="Search candidates..."
+class="border rounded-lg px-3 py-1 text-sm">
+
+<div class="flex items-center gap-2">
+
+<img class="w-8 h-8 rounded-full"
+src="https://i.pravatar.cc/40">
+
+<div class="text-sm">
+<p class="font-semibold">Admin User</p>
+<p class="text-gray-400 text-xs">Super Admin</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CONTENT -->
+<div class="p-6">
+
+<!-- TABS -->
+<div class="flex gap-5 border-b mb-5">
+
+<button onclick="showTab('active')" id="tab-active"
+class="pb-2 border-b-2 border-red-500 text-red-500 font-semibold">
+Active
+</button>
+
+<button onclick="showTab('archived')" id="tab-archived"
+class="pb-2 text-gray-500">
+Archived
+</button>
+
+<button onclick="showTab('shortlisted')" id="tab-shortlisted"
+class="pb-2 text-gray-500">
+Shortlisted
+</button>
+
+</div>
+
+
+<!-- TABLE -->
+<div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+
+<div class="overflow-x-auto">
+
+<table class="w-full text-left">
+
+<thead class="bg-gray-50 border-b border-gray-100">
+<tr>
+<th class="px-6 py-4 text-[10px] uppercase font-bold text-gray-400">Applicant</th>
+<th class="px-6 py-4 text-[10px] uppercase font-bold text-gray-400">Email</th>
+<th class="px-6 py-4 text-[10px] uppercase font-bold text-gray-400">Skills</th>
+<th class="px-6 py-4 text-[10px] uppercase font-bold text-gray-400">Applied Job</th>
+<th class="px-6 py-4 text-[10px] uppercase font-bold text-gray-400">Status</th>
+<th class="px-6 py-4 text-[10px] uppercase font-bold text-gray-400 text-right">Actions</th>
+</tr>
+</thead>
+
+<tbody class="divide-y divide-gray-100">
+
+<tr class="hover:bg-gray-50 transition">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold text-xs">JD</div>
+<span class="font-bold text-sm">Juan Dela Cruz</span>
+</div>
+</td>
+
+<td class="px-6 py-4 text-sm text-gray-500">juan.dc@email.com</td>
+
+<td class="px-6 py-4 space-x-1">
+<span class="bg-gray-100 px-2 py-1 rounded text-xs">React</span>
+<span class="bg-gray-100 px-2 py-1 rounded text-xs">Node.js</span>
+</td>
+
+<td class="px-6 py-4 text-sm">Senior Developer</td>
+
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-[10px] font-bold">
+Shortlisted
+</span>
+</td>
+
+<td class="px-6 py-4 text-right space-x-3 text-gray-400">
+<i class="fa-solid fa-eye hover:text-blue-600 cursor-pointer"></i>
+<i class="fa-solid fa-pen hover:text-green-600 cursor-pointer"></i>
+<i class="fa-solid fa-trash hover:text-red-600 cursor-pointer"></i>
+</td>
+</tr>
+
+<tr class="hover:bg-gray-50 transition">
+
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xs">MC</div>
+<span class="font-bold text-sm">Maria Clara</span>
+</div>
+</td>
+
+<td class="px-6 py-4 text-sm text-gray-500">m.clara@email.com</td>
+
+<td class="px-6 py-4 space-x-1">
+<span class="bg-gray-100 px-2 py-1 rounded text-xs">Figma</span>
+<span class="bg-gray-100 px-2 py-1 rounded text-xs">UI/UX</span>
+</td>
+
+<td class="px-6 py-4 text-sm">Product Designer</td>
+
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-[10px] font-bold">
+Review
+</span>
+</td>
+
+<td class="px-6 py-4 text-right space-x-3 text-gray-400">
+<i class="fa-solid fa-eye hover:text-blue-600 cursor-pointer"></i>
+<i class="fa-solid fa-pen hover:text-green-600 cursor-pointer"></i>
+<i class="fa-solid fa-trash hover:text-red-600 cursor-pointer"></i>
+</td>
+
+</tr>
+
+<tr class="hover:bg-gray-50 transition">
+
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold text-xs">JR</div>
+<span class="font-bold text-sm">Jose Rizal</span>
+</div>
+</td>
+
+<td class="px-6 py-4 text-sm text-gray-500">j.rizal@email.com</td>
+
+<td class="px-6 py-4 space-x-1">
+<span class="bg-gray-100 px-2 py-1 rounded text-xs">Python</span>
+<span class="bg-gray-100 px-2 py-1 rounded text-xs">SQL</span>
+</td>
+
+<td class="px-6 py-4 text-sm">Data Analyst</td>
+
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-[10px] font-bold">
+New
+</span>
+</td>
+
+<td class="px-6 py-4 text-right space-x-3 text-gray-400">
+<i class="fa-solid fa-eye hover:text-blue-600 cursor-pointer"></i>
+<i class="fa-solid fa-pen hover:text-green-600 cursor-pointer"></i>
+<i class="fa-solid fa-trash hover:text-red-600 cursor-pointer"></i>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+</div>
+
+<script>
+
+function toggleSidebar(){
+document.getElementById("sidebar").classList.toggle("hidden");
+}
+
+function showTab(tab){
+
+document.querySelectorAll("button[id^='tab']").forEach(btn=>{
+btn.classList.remove("border-red-500","text-red-500","font-semibold")
+})
+
+document.getElementById("tab-"+tab)
+.classList.add("border-red-500","text-red-500","font-semibold")
+
+}
+
+</script>
+
+</body>
+</html>
