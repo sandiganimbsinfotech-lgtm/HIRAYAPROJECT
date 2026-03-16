@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Settings | HirayaCareer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #800000;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #800000;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+<div class="flex flex-col md:flex-row min-h-screen">
+  
+  <aside class="w-full md:w-64 bg-[#800000] text-white md:h-screen sticky top-0 flex flex-col justify-between p-6">
+    <div>
+      <div class="flex items-center gap-2 mb-10">
+        <image src="Hiraya.png" class= "w-14 h-14">
+        <h1 class="text-xl font-bold tracking-tight">Hiraya Pursuit</h1>
+      </div>
+
+      <nav class="space-y-1 text-sm">
+        <div class="flex items-center gap-3 p-3 opacity-60 hover:bg-white/10 rounded-lg cursor-pointer transition">
+            <span>⊞</span> Dashboard
+        </div>
+        <div class="flex items-center gap-3 p-3 opacity-60 hover:bg-white/10 rounded-lg cursor-pointer transition">
+            <span>💼</span> Jobs
+        </div>
+        <div class="flex items-center gap-3 p-3 opacity-60 hover:bg-white/10 rounded-lg cursor-pointer transition">
+            <span>📝</span> My Applications
+        </div>
+        <div class="flex items-center gap-3 p-3 opacity-60 hover:bg-white/10 rounded-lg cursor-pointer transition">
+            <span>💬</span> Messages
+        </div>
+        <div class="flex items-center gap-3 p-3 opacity-60 hover:bg-white/10 rounded-lg cursor-pointer transition">
+            <span>👤</span> Profile
+        </div>
+        <div class="flex items-center gap-3 p-3 bg-white/10 rounded-lg font-semibold cursor-pointer">
+            <span>⚙️</span> Settings
+        </div>
+      </nav>
+    </div>
+
+    <div>
+        <div class="pt-6 border-t border-white/20 flex items-center justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <img src="https://ui-avatars.com/api/?name=John+Mark+Acebedo&background=FFC0CB&color=800000" class="w-10 h-10 rounded-full border-2 border-white/20" alt="Avatar">
+              <div>
+                <p class="text-xs font-bold text-white">John Mark Acebedo</p>
+                <p class="text-[10px] text-white/60">acebedojm.com</p>
+              </div>
+            </div>
+            <button class="text-white/60 hover:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+        </svg>
+      </button>
+        </div>
+        <button class="w-full py-3 bg-white/10 hover:bg-white/20 rounded-xl text-sm font-bold transition flex items-center justify-center gap-2">
+            <span>←</span> Logout
+        </button>
+    </div>
+  </aside>
+
+  <main class="flex-1 p-6 md:p-10 max-w-5xl mx-auto w-full">
+    
+    <div class="flex justify-between items-start mb-10">
+        <div>
+            <h2 class="text-3xl font-extrabold text-slate-800">Account Settings</h2>
+            <p class="text-gray-400 text-sm">Manage your profile, security, and preferences</p>
+        </div>
+        <div class="flex items-center gap-4">
+            <button class="w-10 h-10 rounded-full bg-white border border-gray-100 flex items-center justify-center text-gray-400 shadow-sm hover:bg-gray-50 transition">
+                🔔
+            </button>
+            <div class="w-10 h-10 rounded-full bg-red-100 text-[#800000] flex items-center justify-center font-bold text-xs border border-red-50 shadow-sm">
+                JA
+            </div>
+            <span class="text-sm font-bold text-slate-700 hidden sm:block">John Mark Acebedo</span>
+        </div>
+    </div>
+
+    <div class="space-y-10">
+        
+        <section>
+            <div class="flex items-center gap-2 mb-4 text-slate-800">
+                <span class="text-red-800">🛡️</span>
+                <h3 class="font-bold text-sm">Account Security</h3>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center text-lg">***</div>
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-800 leading-tight">Change Password</h4>
+                            <p class="text-xs text-gray-400">Update your password regularly to keep your account secure.</p>
+                        </div>
+                    </div>
+                    <button class="bg-[#800000] text-white px-6 py-2 rounded-xl font-bold text-xs hover:bg-[#600000] transition">Update</button>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center text-red-800">📱</div>
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-800 leading-tight">Two-Factor Authentication</h4>
+                            <p class="text-xs text-gray-400">Add an extra layer of security to your account.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="text-[10px] font-bold text-gray-300 uppercase tracking-wider">Disabled</span>
+                        <button class="border border-[#800000] text-[#800000] px-6 py-2 rounded-xl font-bold text-xs hover:bg-red-50 transition">Enable</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="flex items-center gap-2 mb-4 text-slate-800">
+                <span class="text-red-800">🔔</span>
+                <h3 class="font-bold text-sm">Notification Preferences</h3>
+            </div>
+            <div class="bg-white rounded-2xl border border-gray-100 shadow-sm divide-y divide-gray-50">
+                <div class="p-6 flex justify-between items-center">
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-800 leading-tight">Job Alert Emails</h4>
+                        <p class="text-xs text-gray-400">Receive emails when new jobs match your profile.</p>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" checked class="sr-only peer">
+                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#800000]"></div>
+                    </label>
+                </div>
+                <div class="p-6 flex justify-between items-center">
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-800 leading-tight">Application Updates</h4>
+                        <p class="text-xs text-gray-400">Get notified about status changes of your applications.</p>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" checked class="sr-only peer">
+                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#800000]"></div>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="flex items-center gap-2 mb-4 text-slate-800">
+                <span class="text-red-800">👁️</span>
+                <h3 class="font-bold text-sm">Privacy & Visibility</h3>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center text-red-800">👤</div>
+                    <div class="flex-1">
+                        <h4 class="text-sm font-bold text-slate-800 leading-tight">Profile Visibility</h4>
+                        <p class="text-xs text-gray-400 mb-4">Control who can find your profile. When enabled, verified recruiters can view your profile and contact you for opportunities.</p>
+                        
+                        <div class="flex flex-wrap gap-6">
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="visibility" checked class="w-4 h-4 text-[#800000] bg-gray-100 border-gray-300 focus:ring-[#800000]">
+                                <span class="text-xs font-bold text-slate-700">Public to Recruiters</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="visibility" class="w-4 h-4 text-[#800000] bg-gray-100 border-gray-300 focus:ring-[#800000]">
+                                <span class="text-xs font-bold text-slate-700">Private</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="flex items-center gap-2 mb-4 text-slate-800">
+                <span class="text-red-800">🌐</span>
+                <h3 class="font-bold text-sm">Language and Region</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                    <label class="text-[10px] font-bold text-gray-400 uppercase tracking-wider ml-1">Interface Language</label>
+                    <select class="w-full p-3 bg-white border border-gray-100 rounded-xl text-xs font-bold text-slate-700 outline-none focus:ring-2 focus:ring-red-50 shadow-sm transition appearance-none">
+                        <option>English (US)</option>
+                        <option>Filipino</option>
+                    </select>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-[10px] font-bold text-gray-400 uppercase tracking-wider ml-1">Preferred Currency</label>
+                    <select class="w-full p-3 bg-white border border-gray-100 rounded-xl text-xs font-bold text-slate-700 outline-none focus:ring-2 focus:ring-red-50 shadow-sm transition appearance-none">
+                        <option>PHP - Philippine Peso</option>
+                        <option>USD - US Dollar</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>
