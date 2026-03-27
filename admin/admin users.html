@@ -3,227 +3,280 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users Management - Hiraya Pursuits</title>
+    <title>User Accounts - Hiraya Pursuits</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FDFCFB; color: #4A4A4A; }
+        
+        /* Smooth transition for mobile sidebar */
+        #sidebar { transition: transform 0.3s ease-in-out; }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-700 font-sans">
+<body class="antialiased overflow-x-hidden">
 
-    <div class="lg:hidden flex items-center justify-between bg-white p-4 shadow-sm">
+    <div class="lg:hidden flex items-center justify-between bg-white p-4 border-b border-gray-100 sticky top-0 z-[60]">
         <div class="flex items-center gap-2">
-            <img src="Hiraya2.png" alt="Hiraya Pursuits" class="w-12 h-12 object-contain">
-            <span class="font-bold text-red-900 text-sm">HIRAYA PURSUITS</span>
+            <img src="Hiraya2.png" alt="Logo" class="w-8 h-8 object-contain">
+            <span class="font-extrabold text-[#631414] text-[10px] tracking-tighter">HIRAYA PURSUITS</span>
         </div>
-        <button id="menuBtn" class="text-gray-500 text-2xl focus:outline-none">
-            <i class="fa-solid fa-bars"></i>
+        <button id="mobileMenuBtn" class="w-10 h-10 flex items-center justify-center text-[#631414] bg-[#F9F3F3] rounded-lg">
+            <i class="fa-solid fa-bars-staggered"></i>
         </button>
     </div>
 
-    <div class="flex">
-        <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out lg:static lg:h-screen flex flex-col justify-between">
-            <div class="p-6">
-                <div class="flex items-center gap-3 mb-8">
-                    <img src="Hiraya2.png" alt="Hiraya Pursuits" class="w-12 h-12 object-contain rounded-full">
-                    <div>
-                        <h1 class="font-bold text-red-900 leading-none">HIRAYA PURSUITS</h1>
-                        <p class="text-[10px] uppercase tracking-widest text-gray-400">Admin Console</p>
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 hidden lg:hidden"></div>
+
+    <div class="flex min-h-screen">
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-100 -translate-x-full lg:translate-x-0 lg:static flex flex-col shadow-2xl lg:shadow-none">
+            <div class="p-6 flex-1">
+                <div class="flex items-center justify-between mb-10 px-2">
+                    <div class="flex items-center gap-3">
+                        <img src="Hiraya2.png" alt="Logo" class="w-10 h-10 object-contain">
+                        <div>
+                            <h1 class="font-extrabold text-[#631414] text-xs tracking-tighter leading-none">HIRAYA PURSUITS</h1>
+                            <p class="text-[9px] uppercase tracking-[0.15em] text-gray-400 mt-1">Admin Console</p>
+                        </div>
                     </div>
+                    <button id="closeSidebar" class="lg:hidden text-gray-400">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
                 </div>
 
                 <nav class="space-y-1">
-                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-red-50 hover:text-red-700 rounded-lg transition">
-                        <i class="fa-solid fa-table-columns w-5"></i> Dashboard
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-gray-50 rounded-xl transition text-sm">
+                        <i class="fa-solid fa-table-columns w-5 text-gray-400"></i> Dashboard
                     </a>
-                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-red-50 hover:text-red-700 rounded-lg transition">
-                        <i class="fa-solid fa-users w-5"></i> Applicants
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-gray-50 rounded-xl transition text-sm">
+                        <i class="fa-solid fa-users w-5 text-gray-400"></i> Applicants
                     </a>
-                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-red-50 hover:text-red-700 rounded-lg transition">
-                        <i class="fa-solid fa-building w-5"></i> Employers
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-gray-50 rounded-xl transition text-sm">
+                        <i class="fa-solid fa-building w-5 text-gray-400"></i> Employers
                     </a>
-                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-red-50 hover:text-red-700 rounded-lg transition">
-                        <i class="fa-solid fa-briefcase w-5"></i> Jobs
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-gray-50 rounded-xl transition text-sm">
+                        <i class="fa-solid fa-briefcase w-5 text-gray-400"></i> Jobs
                     </a>
-                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-red-50 hover:text-red-700 rounded-lg transition">
-                        <i class="fa-solid fa-user-tag w-5"></i> Roles
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-gray-50 rounded-xl transition text-sm">
+                        <i class="fa-solid fa-address-card w-5 text-gray-400"></i> Roles
                     </a>
-                    <a href="#" class="flex items-center gap-3 px-4 py-3 bg-red-50 text-red-700 font-medium rounded-lg transition">
-                        <i class="fa-solid fa-user-gear w-5"></i> Users
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 bg-[#F9F3F3] text-[#631414] font-bold rounded-xl text-sm shadow-sm">
+                        <i class="fa-solid fa-user-group w-5"></i> Users
                     </a>
                 </nav>
 
-                <div class="mt-10">
-                    <p class="px-4 text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">System</p>
-                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-gray-100 rounded-lg transition">
+                <div class="mt-8">
+                    <p class="px-4 text-[10px] font-bold text-gray-300 uppercase tracking-widest mb-2">System</p>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:bg-gray-50 rounded-xl transition text-sm">
                         <i class="fa-solid fa-gear w-5"></i> Settings
                     </a>
-                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-gray-100 rounded-lg transition">
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:bg-gray-50 rounded-xl transition text-sm">
                         <i class="fa-solid fa-right-from-bracket w-5"></i> Logout
                     </a>
                 </div>
             </div>
             
-            <div class="p-4 border-t border-gray-100">
-                <div class="flex items-center gap-3 p-2 bg-gray-50 rounded-xl">
-                    <div class="w-10 h-10 bg-rose-200 rounded-full overflow-hidden">
-                        <img src="https://ui-avatars.com/api/?name=Alex+Hiraya&background=fecdd3" alt="User">
-                    </div>
+            <div class="p-4 border-t border-gray-50">
+                <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-2xl">
+                    <div class="w-9 h-9 bg-[#EAD7D7] rounded-full flex items-center justify-center text-[#631414] font-bold text-[10px]">AH</div>
                     <div>
-                        <p class="text-xs font-bold">Alex Hiraya</p>
-                        <p class="text-[10px] text-gray-500">Super Admin</p>
+                        <p class="text-[11px] font-bold text-gray-800">Alex Hiraya</p>
+                        <p class="text-[9px] text-gray-400">Super Admin</p>
                     </div>
                 </div>
             </div>
         </aside>
 
-        <main class="flex-1 h-screen overflow-y-auto">
+        <main class="flex-1 h-screen overflow-y-auto w-full">
+            <header class="bg-white border-b border-gray-100 px-4 lg:px-8 py-4 flex justify-between items-center sticky top-0 z-30 lg:static">
+                <div class="relative w-full max-w-xs md:max-w-md hidden md:block">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-300 text-sm"></i>
+                    <input type="text" placeholder="Search accounts, roles, or status..." class="w-full pl-11 pr-4 py-2 bg-gray-50 border border-transparent rounded-xl text-xs focus:bg-white focus:border-gray-200 transition outline-none">
+                </div>
+                <div class="flex items-center gap-2 lg:gap-4 ml-auto">
+                    <button class="text-gray-400 hover:text-[#631414] transition relative p-2">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+                    </button>
+                    <div class="h-8 w-[1px] bg-gray-100 mx-1 hidden sm:block"></div>
+                    <div class="flex items-center gap-3">
+                        <div class="text-right hidden sm:block">
+                            <p class="text-[11px] font-bold text-gray-800 leading-none">Admin User</p>
+                            <p class="text-[9px] text-red-400 font-medium mt-1">Super Admin</p>
+                        </div>
+                        <div class="w-9 h-9 rounded-full bg-[#B7C9C2] flex items-center justify-center">
+                            <i class="fa-solid fa-user text-white text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
             <div class="p-4 lg:p-10 max-w-7xl mx-auto">
                 <div class="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
-                        <h2 class="text-3xl font-bold text-gray-800">Users Management</h2>
-                        <p class="text-gray-500">Manage all registered accounts, roles, and access levels.</p>
+                        <h2 class="text-2xl lg:text-3xl font-extrabold text-[#1A1A1A] tracking-tight">User Accounts</h2>
+                        <p class="text-gray-400 text-sm">Manage all administrative and platform users.</p>
                     </div>
-                    <button class="bg-red-900 text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-red-800 transition shadow-sm flex items-center gap-2">
-                        <i class="fa-solid fa-user-plus"></i> Add New User
+                    <button class="bg-[#631414] text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-[#4A0F0F] transition shadow-md flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-user-plus text-xs"></i> Add New User
                     </button>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4">
-                        <div class="w-12 h-12 bg-blue-50 text-blue-500 rounded-xl flex items-center justify-center text-xl">
-                            <i class="fa-solid fa-users"></i>
-                        </div>
-                        <div>
-                            <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Total Users</p>
-                            <p class="text-2xl font-bold">1,248</p>
-                        </div>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+                    <div class="bg-white p-4 lg:p-6 rounded-[2rem] border border-gray-50 shadow-sm">
+                        <div class="w-10 h-10 bg-[#F9F3F3] text-[#631414] rounded-xl flex items-center justify-center mb-4"><i class="fa-solid fa-users"></i></div>
+                        <p class="text-[9px] lg:text-[10px] uppercase font-bold text-gray-300 tracking-wider">Total Users</p>
+                        <p class="text-xl lg:text-3xl font-extrabold text-[#1A1A1A]">1,452</p>
                     </div>
-
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4">
-                        <div class="w-12 h-12 bg-green-50 text-green-500 rounded-xl flex items-center justify-center text-xl">
-                            <i class="fa-solid fa-user-check"></i>
-                        </div>
-                        <div>
-                            <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Active Now</p>
-                            <p class="text-2xl font-bold">156</p>
-                        </div>
+                    <div class="bg-white p-4 lg:p-6 rounded-[2rem] border border-gray-50 shadow-sm">
+                        <div class="w-10 h-10 bg-[#F9F3F3] text-[#631414] rounded-xl flex items-center justify-center mb-4"><i class="fa-solid fa-user-shield"></i></div>
+                        <p class="text-[9px] lg:text-[10px] uppercase font-bold text-gray-300 tracking-wider">Active Admins</p>
+                        <p class="text-xl lg:text-3xl font-extrabold text-[#1A1A1A]">12</p>
                     </div>
-
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4">
-                        <div class="w-12 h-12 bg-red-50 text-red-500 rounded-xl flex items-center justify-center text-xl">
-                            <i class="fa-solid fa-user-slash"></i>
-                        </div>
-                        <div>
-                            <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Suspended</p>
-                            <p class="text-2xl font-bold">12</p>
-                        </div>
+                    <div class="bg-white p-4 lg:p-6 rounded-[2rem] border border-gray-50 shadow-sm">
+                        <div class="w-10 h-10 bg-[#F9F3F3] text-[#631414] rounded-xl flex items-center justify-center mb-4"><i class="fa-solid fa-id-card"></i></div>
+                        <p class="text-[9px] lg:text-[10px] uppercase font-bold text-gray-300 tracking-wider">Recruiters</p>
+                        <p class="text-xl lg:text-3xl font-extrabold text-[#1A1A1A]">84</p>
+                    </div>
+                    <div class="bg-white p-4 lg:p-6 rounded-[2rem] border border-gray-50 shadow-sm">
+                        <div class="w-10 h-10 bg-[#F9F3F3] text-[#631414] rounded-xl flex items-center justify-center mb-4"><i class="fa-solid fa-building"></i></div>
+                        <p class="text-[9px] lg:text-[10px] uppercase font-bold text-gray-300 tracking-wider">Employers</p>
+                        <p class="text-xl lg:text-3xl font-extrabold text-[#1A1A1A]">320</p>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                    <div class="p-6 border-b border-gray-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                        <div class="relative flex-1 max-w-md">
-                            <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                            <input type="text" placeholder="Search users by name or email..." class="w-full pl-11 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-50 focus:border-red-200 transition">
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <button class="px-4 py-2 border border-gray-200 rounded-xl text-xs font-bold hover:bg-gray-50 transition">
-                                <i class="fa-solid fa-filter mr-2"></i> Filter
-                            </button>
-                        </div>
-                    </div>
-
+                <div class="bg-white rounded-[2rem] border border-gray-50 shadow-sm overflow-hidden">
                     <div class="overflow-x-auto">
-                        <table class="w-full text-left">
-                            <thead class="bg-gray-50 border-b border-gray-100">
+                        <table class="w-full text-left min-w-[800px]">
+                            <thead class="bg-gray-50/50 border-b border-gray-50">
                                 <tr>
-                                    <th class="px-6 py-4 text-[10px] uppercase font-bold text-gray-400 tracking-widest">User Details</th>
-                                    <th class="px-6 py-4 text-[10px] uppercase font-bold text-gray-400 tracking-widest">Role</th>
-                                    <th class="px-6 py-4 text-[10px] uppercase font-bold text-gray-400 tracking-widest">Joined Date</th>
-                                    <th class="px-6 py-4 text-[10px] uppercase font-bold text-gray-400 tracking-widest">Status</th>
-                                    <th class="px-6 py-4 text-[10px] uppercase font-bold text-gray-400 tracking-widest text-right">Actions</th>
+                                    <th class="px-8 py-5 text-[10px] uppercase font-bold text-gray-300 tracking-widest">User</th>
+                                    <th class="px-6 py-5 text-[10px] uppercase font-bold text-gray-300 tracking-widest">Email</th>
+                                    <th class="px-6 py-5 text-[10px] uppercase font-bold text-gray-300 tracking-widest">Role</th>
+                                    <th class="px-6 py-5 text-[10px] uppercase font-bold text-gray-300 tracking-widest">Status</th>
+                                    <th class="px-6 py-5 text-[10px] uppercase font-bold text-gray-300 tracking-widest">Last Login</th>
+                                    <th class="px-8 py-5 text-[10px] uppercase font-bold text-gray-300 tracking-widest text-right">Actions</th>
                                 </tr>
                             </thead>
-                            <tbody class="divide-y divide-gray-100">
-                                <tr class="hover:bg-gray-50/50 transition">
-                                    <td class="px-6 py-4">
+                            <tbody class="divide-y divide-gray-50">
+                                <tr class="hover:bg-gray-50/30 transition">
+                                    <td class="px-8 py-4">
                                         <div class="flex items-center gap-3">
-                                            <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center font-bold text-red-800 text-xs">MA</div>
-                                            <div>
-                                                <p class="font-bold text-sm text-gray-800 leading-tight">Mark Acebedo</p>
-                                                <p class="text-xs text-gray-400">mark@example.com</p>
+                                            <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-200">
+                                                <img src="https://i.pravatar.cc/100?u=juan" alt="Avatar">
                                             </div>
+                                            <p class="font-bold text-sm text-gray-800">Juan Dela Cruz</p>
                                         </div>
                                     </td>
+                                    <td class="px-6 py-4 text-xs text-gray-400">juan.dc@email.com</td>
+                                    <td class="px-6 py-4"><span class="px-3 py-1 bg-[#F9F3F3] text-[#631414] rounded-lg text-[10px] font-bold">Super Admin</span></td>
                                     <td class="px-6 py-4">
-                                        <span class="text-xs font-medium text-gray-600">Job Seeker</span>
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                                            <span class="text-xs font-bold text-green-600">Active</span>
+                                        </div>
                                     </td>
-                                    <td class="px-6 py-4 text-xs text-gray-500">Oct 12, 2023</td>
-                                    <td class="px-6 py-4">
-                                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-[10px] font-bold">Active</span>
-                                    </td>
-                                    <td class="px-6 py-4 text-right space-x-2">
-                                        <button class="text-gray-400 hover:text-blue-600 transition"><i class="fa-solid fa-pen-to-square"></i></button>
-                                        <button class="text-gray-400 hover:text-red-600 transition"><i class="fa-solid fa-ban"></i></button>
+                                    <td class="px-6 py-4 text-xs text-gray-400">2 hours ago</td>
+                                    <td class="px-8 py-4 text-right">
+                                        <div class="flex justify-end gap-3 text-gray-300">
+                                            <i class="fa-regular fa-eye hover:text-[#631414] cursor-pointer"></i>
+                                            <i class="fa-solid fa-pen hover:text-[#631414] cursor-pointer"></i>
+                                            <i class="fa-solid fa-ban hover:text-red-500 cursor-pointer"></i>
+                                        </div>
                                     </td>
                                 </tr>
-                                 <tr class="hover:bg-gray-50/50 transition">
-                                    <td class="px-6 py-4">
+                                <tr class="hover:bg-gray-50/30 transition">
+                                    <td class="px-8 py-4">
                                         <div class="flex items-center gap-3">
-                                            <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center font-bold text-red-800 text-xs">MA</div>
-                                            <div>
-                                                <p class="font-bold text-sm text-gray-800 leading-tight">Ashley Gonzaga</p>
-                                                <p class="text-xs text-gray-400">ashley.g@example.com</p>
+                                            <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-200">
+                                                <img src="https://i.pravatar.cc/100?u=maria" alt="Avatar">
                                             </div>
+                                            <p class="font-bold text-sm text-gray-800">Maria Clara</p>
                                         </div>
                                     </td>
+                                    <td class="px-6 py-4 text-xs text-gray-400">m.clara@recruit.com</td>
+                                    <td class="px-6 py-4"><span class="px-3 py-1 bg-[#F1F5F9] text-[#475569] rounded-lg text-[10px] font-bold">Recruiter</span></td>
                                     <td class="px-6 py-4">
-                                        <span class="text-xs font-medium text-gray-600">Job Seeker</span>
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                                            <span class="text-xs font-bold text-green-600">Active</span>
+                                        </div>
                                     </td>
-                                    <td class="px-6 py-4 text-xs text-gray-500">July 11, 2025</td>
-                                    <td class="px-6 py-4">
-                                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-[10px] font-bold">Active</span>
-                                    </td>
-                                    <td class="px-6 py-4 text-right space-x-2">
-                                        <button class="text-gray-400 hover:text-blue-600 transition"><i class="fa-solid fa-pen-to-square"></i></button>
-                                        <button class="text-gray-400 hover:text-red-600 transition"><i class="fa-solid fa-ban"></i></button>
+                                    <td class="px-6 py-4 text-xs text-gray-400">5 mins ago</td>
+                                    <td class="px-8 py-4 text-right text-gray-300">
+                                        <div class="flex justify-end gap-3">
+                                            <i class="fa-regular fa-eye hover:text-[#631414] cursor-pointer"></i>
+                                            <i class="fa-solid fa-pen hover:text-[#631414] cursor-pointer"></i>
+                                            <i class="fa-solid fa-ban hover:text-red-500 cursor-pointer"></i>
+                                        </div>
                                     </td>
                                 </tr>
-                                <tr class="hover:bg-gray-50/50 transition">
-                                    <td class="px-6 py-4">
+                                <tr class="hover:bg-gray-50/30 transition">
+                                    <td class="px-8 py-4">
                                         <div class="flex items-center gap-3">
-                                            <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center font-bold text-purple-800 text-xs">SM</div>
-                                            <div>
-                                                <p class="font-bold text-sm text-gray-800 leading-tight">Ella Flor</p>
-                                                <p class="text-xs text-gray-400">ella.f@tech.com</p>
+                                            <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-200">
+                                                <img src="https://i.pravatar.cc/100?u=jose" alt="Avatar">
                                             </div>
+                                            <p class="font-bold text-sm text-gray-800">Jose Rizal</p>
                                         </div>
                                     </td>
+                                    <td class="px-6 py-4 text-xs text-gray-400">rizal.j@email.com</td>
+                                    <td class="px-6 py-4"><span class="px-3 py-1 bg-[#F1F5F9] text-[#475569] rounded-lg text-[10px] font-bold">Employer</span></td>
                                     <td class="px-6 py-4">
-                                        <span class="text-xs font-medium text-gray-600">Employer</span>
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                            <span class="text-xs font-bold text-red-500">Suspended</span>
+                                        </div>
                                     </td>
-                                    <td class="px-6 py-4 text-xs text-gray-500">Nov 05, 2023</td>
+                                    <td class="px-6 py-4 text-xs text-gray-400">3 days ago</td>
+                                    <td class="px-8 py-4 text-right text-gray-300">
+                                        <div class="flex justify-end gap-3">
+                                            <i class="fa-regular fa-eye hover:text-[#631414] cursor-pointer"></i>
+                                            <i class="fa-solid fa-pen hover:text-[#631414] cursor-pointer"></i>
+                                            <i class="fa-solid fa-rotate-left hover:text-green-500 cursor-pointer"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50/30 transition">
+                                    <td class="px-8 py-4">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-200">
+                                                <img src="https://i.pravatar.cc/100?u=tech" alt="Avatar">
+                                            </div>
+                                            <p class="font-bold text-sm text-gray-800">Tech Solutions</p>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 text-xs text-gray-400">hr@techsol.com</td>
+                                    <td class="px-6 py-4"><span class="px-3 py-1 bg-[#F1F5F9] text-[#475569] rounded-lg text-[10px] font-bold">Employer</span></td>
                                     <td class="px-6 py-4">
-                                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-[10px] font-bold">Active</span>
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></span>
+                                            <span class="text-xs font-bold text-yellow-500">Pending</span>
+                                        </div>
                                     </td>
-                                    <td class="px-6 py-4 text-right space-x-2">
-                                        <button class="text-gray-400 hover:text-blue-600 transition"><i class="fa-solid fa-pen-to-square"></i></button>
-                                        <button class="text-gray-400 hover:text-red-600 transition"><i class="fa-solid fa-ban"></i></button>
+                                    <td class="px-6 py-4 text-xs text-gray-400">1 day ago</td>
+                                    <td class="px-8 py-4 text-right text-gray-300">
+                                        <div class="flex justify-end gap-3">
+                                            <i class="fa-regular fa-eye hover:text-[#631414] cursor-pointer"></i>
+                                            <i class="fa-solid fa-circle-check hover:text-green-500 cursor-pointer"></i>
+                                            <i class="fa-solid fa-trash hover:text-red-500 cursor-pointer"></i>
+                                        </div>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
-                    <div class="p-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-                        <p class="text-sm text-gray-500">Showing <span class="font-bold">2</span> of <span class="font-bold">1,248</span> users</p>
-                        <div class="flex items-center gap-2">
-                            <button class="px-3 py-1 border border-gray-200 rounded hover:bg-gray-50 transition"><i class="fa-solid fa-chevron-left text-xs text-gray-400"></i></button>
-                            <button class="px-3 py-1 bg-red-900 text-white rounded font-bold text-sm">1</button>
-                            <button class="px-3 py-1 border border-gray-200 rounded hover:bg-gray-50 text-sm transition">2</button>
-                            <button class="px-3 py-1 border border-gray-200 rounded hover:bg-gray-50 text-sm transition">3</button>
-                            <span class="px-2 text-gray-400">...</span>
-                            <button class="px-3 py-1 border border-gray-200 rounded hover:bg-gray-50 text-sm transition">125</button>
-                            <button class="px-3 py-1 border border-gray-200 rounded hover:bg-gray-50 transition"><i class="fa-solid fa-chevron-right text-xs text-gray-400"></i></button>
+                    <div class="p-8 flex items-center justify-between border-t border-gray-50 bg-white">
+                        <p class="text-[10px] lg:text-xs font-bold text-[#D9B5B5]">Showing 1-10 of 1,452 users</p>
+                        <div class="flex items-center gap-1">
+                            <button class="w-8 h-8 flex items-center justify-center text-gray-300"><i class="fa-solid fa-chevron-left text-[10px]"></i></button>
+                            <button class="w-8 h-8 bg-[#631414] text-white rounded-lg font-bold text-xs">1</button>
+                            <button class="w-8 h-8 text-gray-400 font-bold text-xs">2</button>
+                            <button class="w-8 h-8 text-gray-400 font-bold text-xs">3</button>
+                            <span class="px-2 text-gray-200">...</span>
+                            <button class="w-8 h-8 text-gray-400 font-bold text-xs">145</button>
+                            <button class="w-8 h-8 flex items-center justify-center text-[#631414]"><i class="fa-solid fa-chevron-right text-[10px]"></i></button>
                         </div>
                     </div>
                 </div>
@@ -232,20 +285,19 @@
     </div>
 
     <script>
-        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        const closeBtn = document.getElementById('closeSidebar');
 
-        // Mobile Menu Toggle
-        menuBtn.addEventListener('click', () => {
+        function toggleSidebar() {
             sidebar.classList.toggle('-translate-x-full');
-        });
+            overlay.classList.toggle('hidden');
+        }
 
-        // Close sidebar when clicking outside on small screens
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth < 1024 && !sidebar.contains(e.target) && !menuBtn.contains(e.target)) {
-                sidebar.classList.add('-translate-x-full');
-            }
-        });
+        mobileMenuBtn.addEventListener('click', toggleSidebar);
+        closeBtn.addEventListener('click', toggleSidebar);
+        overlay.addEventListener('click', toggleSidebar);
     </script>
 </body>
 </html>
