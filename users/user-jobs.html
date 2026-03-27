@@ -1,125 +1,217 @@
-<div class="flex flex-col md:flex-row min-h-screen bg-gray-50 font-sans">
-  
-  <aside class="w-full md:w-64 bg-[#800000] text-white md:h-screen sticky top-0 flex flex-col justify-between mr-2 p-6">
-    <div>
-      <div class="flex items-center gap-2 mb-10">
-        <image src="Hiraya.png" class= "w-14 h-14">
-        <h1 class="text-xl font-bold tracking-tight">Hiraya Pursuit</h1>
-      </div>
-<script src="https://cdn.tailwindcss.com"></script>
-      <nav class="space-y-1 text-sm">
-        <div class="p-3 opacity-60 hover:bg-white/10">Dashboard</div>
-        <div class="p-3 bg-white/10 rounded-lg font-semibold">Jobs</div>
-        <div class="p-3 opacity-60 hover:bg-white/10">My Applications</div>
-        <div class="p-3 opacity-60 hover:bg-white/10">Messages</div>
-        <div class="p-3 opacity-60 hover:bg-white/10">Profile</div>
-        <div class="p-3 opacity-60 hover:bg-white/10">Settings</div>
-      </nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobs | HirayaCareer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-icons { vertical-align: middle; }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <div class="lg:hidden fixed top-0 left-0 right-0 z-50 bg-[#800000] shadow-md border-b border-red-900/50">
+        <div class="flex items-center justify-between px-5 py-4">
+            <div class="flex items-center space-x-3">
+                <img src="Hiraya.png" class="h-8 w-8 rounded-full" alt="Logo">
+                <h1 class="text-white font-bold tracking-tight uppercase text-sm">Hiraya Career</h1>
+            </div>
+            <button id="mobileMenuBtn" class="text-white">
+                <span class="material-icons">menu</span>
+            </button>
+        </div>
+        
+        <nav id="mobileNav" class="hidden bg-[#800000] px-5 pb-6 border-t border-red-800">
+            <ul class="flex flex-col gap-4 pt-5 text-sm font-medium text-white/80">
+                <li class="flex items-center gap-3"><span class="material-icons">grid_view</span> Dashboard</li>
+                <li class="text-white font-bold flex items-center gap-3"><span class="material-icons">work_outline</span> Jobs</li>
+                <li class="flex items-center gap-3"><span class="material-icons">assignment</span> My Applications</li>
+                <li class="flex items-center gap-3"><span class="material-icons">forum</span> Messages</li>
+                <li class="flex items-center gap-3"><span class="material-icons">person</span> Profile</li>
+                <li class="flex items-center gap-3"><span class="material-icons">settings</span> Settings</li>
+                <li class="pt-4 mt-4 border-t border-white/10 flex items-center gap-3 text-white/60"><span class="material-icons">logout</span> Logout</li>
+            </ul>
+        </nav>
     </div>
 
-    <div class="mt-10 pt-6 border-t border-white/20 flex items-center gap-3">
-      <div class="w-10 h-10 rounded-full bg-pink-200 flex items-center justify-center text-[#800000] font-bold text-xs">JM</div>
-      <div>
-        <p class="text-sm font-medium">John Mark Acebedo</p>
-        <p class="text-xs text-white/60">acebedojm.com</p>
-      </div>
-      <button class="text-white/60 hover:text-white">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-        </svg>
-      </button>
+    <div class="flex flex-col md:flex-row min-h-screen">
+        
+        <aside class="hidden lg:flex w-72 bg-[#800000] text-white h-screen sticky top-0 flex-col justify-between flex-shrink-0">
+            <div class="p-8">
+                <div class="flex items-center gap-3 mb-12">
+                    <img src="Hiraya.png" class="w-12 h-12 rounded-full" alt="Logo">
+                    <h1 class="text-xl font-bold tracking-tight">Hiraya Pursuit</h1>
+                </div>
+
+                <nav class="space-y-2">
+                    <div class="flex items-center gap-4 p-4 text-white/60 hover:text-white cursor-pointer transition">
+                        <span class="material-icons">grid_view</span> Dashboard
+                    </div>
+                    <div class="flex items-center gap-4 p-4 bg-white/10 rounded-xl font-bold cursor-pointer transition">
+                        <span class="material-icons">work_outline</span> Jobs
+                    </div>
+                    <div class="flex items-center gap-4 p-4 text-white/60 hover:text-white cursor-pointer transition">
+                        <span class="material-icons">assignment</span> My Applications
+                    </div>
+                    <div class="flex items-center gap-4 p-4 text-white/60 hover:text-white cursor-pointer transition">
+                        <span class="material-icons">forum</span> Messages
+                    </div>
+                    <div class="flex items-center gap-4 p-4 text-white/60 hover:text-white cursor-pointer transition">
+                        <span class="material-icons">person</span> Profile
+                    </div>
+                    <div class="flex items-center gap-4 p-4 text-white/60 hover:text-white cursor-pointer transition">
+                        <span class="material-icons">settings</span> Settings
+                    </div>
+                </nav>
+            </div>
+
+            <div class="flex flex-col">
+                <div class="px-8 py-6 border-t border-white/10 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <img src="https://ui-avatars.com/api/?name=John+Mark+Acebedo&background=FFC0CB&color=800000" class="w-10 h-10 rounded-full border-2 border-white/20" alt="Avatar">
+                        <div class="leading-tight">
+                            <p class="text-xs font-bold text-white">John Mark Acebedo</p>
+                            <p class="text-[10px] text-white/40">acebedojm.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-6 pb-8">
+                    <button class="w-full flex items-center justify-center gap-2 py-3.5 bg-white/10 hover:bg-white/20 text-white text-sm font-bold rounded-xl transition-all">
+                        <span class="material-icons text-lg">logout</span> Logout
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <main class="flex-1 p-6 lg:p-10 pt-24 lg:pt-10">
+            
+            <div class="max-w-6xl mx-auto mb-10 flex flex-col sm:flex-row gap-4">
+                <div class="relative flex-1">
+                    <span class="absolute inset-y-0 left-4 flex items-center text-gray-400">🔍</span>
+                    <input type="text" placeholder="Search for jobs..." class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-gray-200 outline-none shadow-sm focus:ring-2 focus:ring-[#800000]/10 transition">
+                </div>
+                <div class="flex gap-3">
+                    <button class="flex-1 sm:flex-none px-6 py-3.5 bg-white border border-gray-200 rounded-xl font-medium hover:bg-gray-50 transition">Filters</button>
+                    <button class="flex-[2] sm:flex-none px-10 py-3.5 bg-[#800000] text-white rounded-xl font-bold hover:bg-[#600000] transition shadow-md">Search</button>
+                </div>
+            </div>
+
+            <div class="max-w-6xl mx-auto flex justify-between items-end mb-8">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-800">Recommended for you</h2>
+                    <p class="text-gray-500 text-sm">Based on your profile</p>
+                </div>
+                <div class="text-sm font-bold text-[#800000] cursor-pointer">Newest First ▼</div>
+            </div>
+
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition group">
+                    <div class="flex justify-between mb-6">
+                        <span class="text-2xl group-hover:scale-110 transition-transform inline-block">🎨</span> 
+                        <span class="text-gray-300 hover:text-[#800000] cursor-pointer material-icons">bookmark_border</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-slate-800">Senior Product Designer</h3>
+                    <p class="text-gray-500 text-sm mb-8 leading-relaxed">Design and maintain scalable design systems for global products.</p>
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-50">
+                        <span class="font-bold text-[#800000]">$120k - $150k</span>
+                        <button class="px-6 py-2 bg-[#800000] text-white rounded-lg font-bold hover:bg-[#600000] transition">Open</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition group">
+                    <div class="flex justify-between mb-6">
+                        <span class="text-2xl group-hover:scale-110 transition-transform inline-block">💻</span> 
+                        <span class="text-gray-300 hover:text-[#800000] cursor-pointer material-icons">bookmark_border</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-slate-800">Frontend Engineer</h3>
+                    <p class="text-gray-500 text-sm mb-8 leading-relaxed">Build responsive web applications using React and Tailwind CSS.</p>
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-50">
+                        <span class="font-bold text-[#800000]">$110k - $140k</span>
+                        <button class="px-6 py-2 bg-[#800000] text-white rounded-lg font-bold hover:bg-[#600000] transition">Open</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition group">
+                    <div class="flex justify-between mb-6">
+                        <span class="text-2xl group-hover:scale-110 transition-transform inline-block">📢</span> 
+                        <span class="text-gray-300 hover:text-[#800000] cursor-pointer material-icons">bookmark_border</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-slate-800">Marketing Manager</h3>
+                    <p class="text-gray-500 text-sm mb-8 leading-relaxed">Lead multi-channel marketing campaigns and growth strategies.</p>
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-50">
+                        <span class="font-bold text-[#800000]">$90k - $120k</span>
+                        <button class="px-6 py-2 bg-[#800000] text-white rounded-lg font-bold hover:bg-[#600000] transition">Open</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition group">
+                    <div class="flex justify-between mb-6">
+                        <span class="text-2xl group-hover:scale-110 transition-transform inline-block">📊</span> 
+                        <span class="text-gray-300 hover:text-[#800000] cursor-pointer material-icons">bookmark_border</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-slate-800">Data Scientist</h3>
+                    <p class="text-gray-500 text-sm mb-8 leading-relaxed">Analyze large datasets to drive business intelligence and insights.</p>
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-50">
+                        <span class="font-bold text-[#800000]">$130k - $160k</span>
+                        <button class="px-6 py-2 bg-[#800000] text-white rounded-lg font-bold hover:bg-[#600000] transition">Open</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition group">
+                    <div class="flex justify-between mb-6">
+                        <span class="text-2xl group-hover:scale-110 transition-transform inline-block">🔍</span> 
+                        <span class="text-gray-300 hover:text-[#800000] cursor-pointer material-icons">bookmark_border</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-slate-800">UX Researcher</h3>
+                    <p class="text-gray-500 text-sm mb-8 leading-relaxed">Conduct user interviews and usability testing for new features.</p>
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-50">
+                        <span class="font-bold text-[#800000]">$100k - $130k</span>
+                        <button class="px-6 py-2 bg-[#800000] text-white rounded-lg font-bold hover:bg-[#600000] transition">Open</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition group">
+                    <div class="flex justify-between mb-6">
+                        <span class="text-2xl group-hover:scale-110 transition-transform inline-block">🚀</span> 
+                        <span class="text-gray-300 hover:text-[#800000] cursor-pointer material-icons">bookmark_border</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-slate-800">Product Manager</h3>
+                    <p class="text-gray-500 text-sm mb-8 leading-relaxed">Define product roadmap and collaborate across engineering teams.</p>
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-50">
+                        <span class="font-bold text-[#800000]">$125k - $155k</span>
+                        <button class="px-6 py-2 bg-[#800000] text-white rounded-lg font-bold hover:bg-[#600000] transition">Open</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-center items-center gap-2 mt-12 py-8 border-t border-gray-100">
+                <button class="p-2 border border-gray-200 rounded-full text-gray-400 hover:bg-gray-50 transition">
+                    <span class="material-icons text-sm">arrow_back</span>
+                </button>
+                <button class="w-10 h-10 bg-[#800000] text-white rounded-full font-bold shadow-sm">1</button>
+                <button class="w-10 h-10 hover:bg-gray-100 rounded-full font-medium transition">2</button>
+                <button class="w-10 h-10 hover:bg-gray-100 rounded-full font-medium transition">3</button>
+                <span class="px-2 text-gray-400">...</span>
+                <button class="w-10 h-10 hover:bg-gray-100 rounded-full font-medium transition">12</button>
+                <button class="p-2 border border-gray-200 rounded-full text-gray-400 hover:bg-gray-50 transition">
+                    <span class="material-icons text-sm">arrow_forward</span>
+                </button>
+            </div>
+
+        </main>
     </div>
-  </aside>
 
-  <main class="flex-1 p-4 md:p-10">
-    
-    <div class="max-w-6xl mx-auto mb-10 flex gap-4">
-      <input type="text" placeholder="Search for jobs..." class="flex-1 px-4 py-3 rounded-xl border border-gray-200 outline-none shadow-sm">
-      <button class="px-6 py-3 bg-white border border-gray-200 rounded-xl font-medium">Filters</button>
-      <button class="px-10 py-3 bg-[#800000] text-white rounded-xl font-bold">Search</button>
-    </div>
-
-    <div class="max-w-6xl mx-auto flex justify-between items-end mb-8">
-      <div>
-        <h2 class="text-2xl font-bold">Recommended for you</h2>
-        <p class="text-gray-500">Based on your profile</p>
-      </div>
-      <div class="text-sm font-medium text-[#800000]">Newest First ▼</div>
-    </div>
-
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      
-      <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-        <div class="flex justify-between mb-6"><span class="text-2xl">🎨</span> <span class="text-gray-300">🔖</span></div>
-        <h3 class="text-lg font-bold mb-2">Senior Product Designer</h3>
-        <p class="text-gray-500 text-sm mb-8">Design and maintain scalable design systems for global products.</p>
-        <div class="flex justify-between items-center pt-4 border-t border-gray-50">
-          <span class="font-bold text-[#800000]">$120k - $150k</span>
-          <button class="px-6 py-2 bg-[#800000] text-white rounded-lg font-bold">Open</button>
-        </div>
-      </div>
-
-      <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-        <div class="flex justify-between mb-6"><span class="text-2xl">&lt;/&gt;</span> <span class="text-gray-300">🔖</span></div>
-        <h3 class="text-lg font-bold mb-2">Frontend Engineer</h3>
-        <p class="text-gray-500 text-sm mb-8">Build responsive web applications using React and Tailwind.</p>
-        <div class="flex justify-between items-center pt-4 border-t border-gray-50">
-          <span class="font-bold text-[#800000]">$110k - $140k</span>
-          <button class="px-6 py-2 bg-[#800000] text-white rounded-lg font-bold">Open</button>
-        </div>
-      </div>
-
-      <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-        <div class="flex justify-between mb-6"><span class="text-2xl">📢</span> <span class="text-gray-300">🔖</span></div>
-        <h3 class="text-lg font-bold mb-2">Marketing Manager</h3>
-        <p class="text-gray-500 text-sm mb-8">Lead multi-channel marketing campaigns and growth strategies.</p>
-        <div class="flex justify-between items-center pt-4 border-t border-gray-50">
-          <span class="font-bold text-[#800000]">$90k - $120k</span>
-          <button class="px-6 py-2 bg-[#800000] text-white rounded-lg font-bold">Open</button>
-        </div>
-      </div>
-
-      <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-        <div class="flex justify-between mb-6"><span class="text-2xl">📊</span> <span class="text-gray-300">🔖</span></div>
-        <h3 class="text-lg font-bold mb-2">Data Scientist</h3>
-        <p class="text-gray-500 text-sm mb-8">Analyze large datasets to drive business intelligence.</p>
-        <div class="flex justify-between items-center pt-4 border-t border-gray-50">
-          <span class="font-bold text-[#800000]">$130k - $160k</span>
-          <button class="px-6 py-2 bg-[#800000] text-white rounded-lg font-bold">Open</button>
-        </div>
-      </div>
-
-      <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-        <div class="flex justify-between mb-6"><span class="text-2xl">🔍</span> <span class="text-gray-300">🔖</span></div>
-        <h3 class="text-lg font-bold mb-2">UX Researcher</h3>
-        <p class="text-gray-500 text-sm mb-8">Conduct user interviews and usability testing for new features.</p>
-        <div class="flex justify-between items-center pt-4 border-t border-gray-50">
-          <span class="font-bold text-[#800000]">$100k - $130k</span>
-          <button class="px-6 py-2 bg-[#800000] text-white rounded-lg font-bold">Open</button>
-        </div>
-      </div>
-
-      <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-        <div class="flex justify-between mb-6"><span class="text-2xl">🚀</span> <span class="text-gray-300">🔖</span></div>
-        <h3 class="text-lg font-bold mb-2">Product Manager</h3>
-        <p class="text-gray-500 text-sm mb-8">Define product roadmap and collaborate with teams.</p>
-        <div class="flex justify-between items-center pt-4 border-t border-gray-50">
-          <span class="font-bold text-[#800000]">$125k - $155k</span>
-          <button class="px-6 py-2 bg-[#800000] text-white rounded-lg font-bold">Open</button>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="flex justify-center items-center gap-2 mt-12 py-6 border-t border-gray-100">
-      <button class="p-2 border border-gray-200 rounded-full text-gray-400">←</button>
-      <button class="w-10 h-10 bg-[#800000] text-white rounded-full font-bold">1</button>
-      <button class="w-10 h-10 hover:bg-gray-100 rounded-full font-medium">2</button>
-      <button class="w-10 h-10 hover:bg-gray-100 rounded-full font-medium">3</button>
-      <span class="px-2">...</span>
-      <button class="w-10 h-10 hover:bg-gray-100 rounded-full font-medium">12</button>
-      <button class="p-2 border border-gray-200 rounded-full text-gray-400">→</button>
-    </div>
-
-  </main>
-</div>
+    <script>
+        const menuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        menuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
