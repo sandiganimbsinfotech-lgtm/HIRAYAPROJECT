@@ -1,295 +1,409 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Applicants Dashboard</title>
-
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiraya Pursuits - Applicants</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+<body class="bg-gray-50 font-sans text-gray-700">
 
-<body class="bg-gray-100 font-sans">
-
-<div class="flex min-h-screen">
-
-<!-- SIDEBAR -->
-<div id="sidebar" class="bg-white w-64 shadow-md flex flex-col justify-between hidden md:flex">
-
-<div>
-
-<!-- LOGO -->
-<div class="p-6 flex items-center gap-3">
-
-<img src="Hiraya2.png" alt="Hiraya Logo" class="w-12 h-12 object-contain">
-
-<div>
-<p class="font-bold text-red-900 text-s">HIRAYA PURSUITS</p>
-<p class="text-xs text-gray-400">ADMIN CONSOLE</p>
+    <div class="flex h-screen overflow-hidden">
+        
+        <div id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-100 flex flex-col justify-between py-6 transition-transform duration-300 transform -translate-x-full lg:translate-x-0 lg:relative lg:flex">
+            
+            <div>
+                <div class="px-6 flex items-center space-x-3 mb-8">
+    <img src="Hiraya2.png" alt="Hiraya Pursuits Logo" class="w-10 h-12 rounded-full object-cover">
+    <div>
+        <h1 class="font-bold text-red-800 text-sm">HIRAYA PURSUITS</h1>
+        <p class="text-xs text-gray-400 font-semibold tracking-wider">ADMIN CONSOLE</p>
+    </div>
 </div>
 
-</div>
-
-<!-- MAIN NAV -->
-<nav class="mt-5">
-
-<a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-red-50 hover:text-red-700 rounded-lg transition">
-                        <i class="fa-solid fa-table-columns w-5"></i> Dashboard
+                <nav class="px-4 space-y-1">
+                    <a href="#" class="flex items-center space-x-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 hover:font-bold rounded-lg text-sm font-medium transition-all">
+                        <i data-lucide="layout-grid" class="w-5 h-5 text-gray-400"></i>
+                        <span>Dashboard</span>
                     </a>
-                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-red-50 hover:text-red-700 rounded-lg transition">
-                        <i class="fa-solid fa-users w-5"></i> Applicants
+                    <a href="#" class="flex items-center space-x-3 px-3 py-2.5 bg-red-50 text-red-700 hover:font-bold rounded-lg text-sm font-medium transition-all">
+                        <i data-lucide="users" class="w-5 h-5 text-red-700"></i>
+                        <span>Applicants</span>
                     </a>
-                    <a href="#" class="flex items-center gap-3 px-4 py-3 bg-red-50 text-red-700 font-medium rounded-lg transition">
-                        <i class="fa-solid fa-building w-5"></i> Employers
+                    <a href="#" class="flex items-center space-x-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 hover:font-bold rounded-lg text-sm font-medium transition-all">
+                        <i data-lucide="building-2" class="w-5 h-5 text-gray-400"></i>
+                        <span>Employers</span>
                     </a>
-                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-red-50 hover:text-red-700 rounded-lg transition">
-                        <i class="fa-solid fa-briefcase w-5"></i> Jobs
+                    <a href="#" class="flex items-center space-x-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 hover:font-bold rounded-lg text-sm font-medium transition-all">
+                        <i data-lucide="briefcase" class="w-5 h-5 text-gray-400"></i>
+                        <span>Jobs</span>
                     </a>
-                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-red-50 hover:text-red-700 rounded-lg transition">
-                        <i class="fa-solid fa-user-tag w-5"></i> Roles
+                    <a href="#" class="flex items-center space-x-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 hover:font-bold rounded-lg text-sm font-medium transition-all">
+                        <i data-lucide="shield-check" class="w-5 h-5 text-gray-400"></i>
+                        <span>Roles</span>
                     </a>
-                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:bg-red-50 hover:text-red-700 rounded-lg transition">
-                        <i class="fa-solid fa-user-gear w-5"></i> Users
+                    <a href="#" class="flex items-center space-x-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 hover:font-bold rounded-lg text-sm font-medium transition-all">
+                        <i data-lucide="user-cog" class="w-5 h-5 text-gray-400"></i>
+                        <span>Users</span>
                     </a>
-</a>
-
-</nav>
-
-<!-- SYSTEM SECTION -->
-<div class="mt-6">
-
-<p class="px-6 text-xs text-gray-400 uppercase mb-2">
-System
-</p>
-
-<a class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-100">
-<i class="fa fa-gear mr-3"></i> Settings
-</a>
-
-<a class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-100">
-<i class="fa fa-right-from-bracket mr-3"></i> Logout
-</a>
-
-</div>
-
-</div>
-
-<!-- USER PROFILE -->
-<div class="p-4 border-t flex items-center gap-3">
-
-<img src="https://i.pravatar.cc/40" class="w-10 h-10 rounded-full">
-
-<div class="text-sm">
-<p class="font-semibold">Alex Hiraya</p>
-<p class="text-gray-400 text-xs">Super Admin</p>
-</div>
-
-</div>
-
-</div>
-
-<!-- MAIN CONTENT -->
-<div class="flex-1">
-
-<!-- TOP BAR -->
-<div class="bg-white shadow p-4 flex justify-between items-center">
-
-<div class="flex items-center gap-4">
-
-<button onclick="toggleSidebar()" class="md:hidden text-gray-600">
-<i class="fa fa-bars"></i>
-</button>
-
-<h1 class="font-semibold text-lg">Applicants</h1>
-
-</div>
-
-<div class="flex items-center gap-4">
-
-<input type="text" placeholder="Search candidates..."
-class="border rounded-lg px-3 py-1 text-sm">
-
-<div class="flex items-center gap-2">
-
-<img class="w-8 h-8 rounded-full"
-src="https://i.pravatar.cc/40">
-
-<div class="text-sm">
-<p class="font-semibold">Admin User</p>
-<p class="text-gray-400 text-xs">Super Admin</p>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- CONTENT -->
-<div class="p-6">
-
-<!-- TABS -->
-<div class="flex gap-5 border-b mb-5">
-
-<button onclick="showTab('active')" id="tab-active"
-class="pb-2 border-b-2 border-red-500 text-red-500 font-semibold">
-Active
-</button>
-
-<button onclick="showTab('archived')" id="tab-archived"
-class="pb-2 text-gray-500">
-Archived
-</button>
-
-<button onclick="showTab('shortlisted')" id="tab-shortlisted"
-class="pb-2 text-gray-500">
-Shortlisted
-</button>
-
-</div>
-
-
-<!-- TABLE -->
-<div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-
-<div class="overflow-x-auto">
-
-<table class="w-full text-left">
-
-<thead class="bg-gray-50 border-b border-gray-100">
-<tr>
-<th class="px-6 py-4 text-[10px] uppercase font-bold text-gray-400">Applicant</th>
-<th class="px-6 py-4 text-[10px] uppercase font-bold text-gray-400">Email</th>
-<th class="px-6 py-4 text-[10px] uppercase font-bold text-gray-400">Skills</th>
-<th class="px-6 py-4 text-[10px] uppercase font-bold text-gray-400">Applied Job</th>
-<th class="px-6 py-4 text-[10px] uppercase font-bold text-gray-400">Status</th>
-<th class="px-6 py-4 text-[10px] uppercase font-bold text-gray-400 text-right">Actions</th>
-</tr>
-</thead>
-
-<tbody class="divide-y divide-gray-100">
-
-<tr class="hover:bg-gray-50 transition">
-<td class="px-6 py-4">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold text-xs">JD</div>
-<span class="font-bold text-sm">Juan Dela Cruz</span>
-</div>
-</td>
-
-<td class="px-6 py-4 text-sm text-gray-500">juan.dc@email.com</td>
-
-<td class="px-6 py-4 space-x-1">
-<span class="bg-gray-100 px-2 py-1 rounded text-xs">React</span>
-<span class="bg-gray-100 px-2 py-1 rounded text-xs">Node.js</span>
-</td>
-
-<td class="px-6 py-4 text-sm">Senior Developer</td>
-
-<td class="px-6 py-4">
-<span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-[10px] font-bold">
-Shortlisted
-</span>
-</td>
-
-<td class="px-6 py-4 text-right space-x-3 text-gray-400">
-<i class="fa-solid fa-eye hover:text-blue-600 cursor-pointer"></i>
-<i class="fa-solid fa-pen hover:text-green-600 cursor-pointer"></i>
-<i class="fa-solid fa-trash hover:text-red-600 cursor-pointer"></i>
-</td>
-</tr>
-
-<tr class="hover:bg-gray-50 transition">
-
-<td class="px-6 py-4">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xs">MC</div>
-<span class="font-bold text-sm">Maria Clara</span>
-</div>
-</td>
-
-<td class="px-6 py-4 text-sm text-gray-500">m.clara@email.com</td>
-
-<td class="px-6 py-4 space-x-1">
-<span class="bg-gray-100 px-2 py-1 rounded text-xs">Figma</span>
-<span class="bg-gray-100 px-2 py-1 rounded text-xs">UI/UX</span>
-</td>
-
-<td class="px-6 py-4 text-sm">Product Designer</td>
-
-<td class="px-6 py-4">
-<span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-[10px] font-bold">
-Review
-</span>
-</td>
-
-<td class="px-6 py-4 text-right space-x-3 text-gray-400">
-<i class="fa-solid fa-eye hover:text-blue-600 cursor-pointer"></i>
-<i class="fa-solid fa-pen hover:text-green-600 cursor-pointer"></i>
-<i class="fa-solid fa-trash hover:text-red-600 cursor-pointer"></i>
-</td>
-
-</tr>
-
-<tr class="hover:bg-gray-50 transition">
-
-<td class="px-6 py-4">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold text-xs">JR</div>
-<span class="font-bold text-sm">Jose Rizal</span>
-</div>
-</td>
-
-<td class="px-6 py-4 text-sm text-gray-500">j.rizal@email.com</td>
-
-<td class="px-6 py-4 space-x-1">
-<span class="bg-gray-100 px-2 py-1 rounded text-xs">Python</span>
-<span class="bg-gray-100 px-2 py-1 rounded text-xs">SQL</span>
-</td>
-
-<td class="px-6 py-4 text-sm">Data Analyst</td>
-
-<td class="px-6 py-4">
-<span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-[10px] font-bold">
-New
-</span>
-</td>
-
-<td class="px-6 py-4 text-right space-x-3 text-gray-400">
-<i class="fa-solid fa-eye hover:text-blue-600 cursor-pointer"></i>
-<i class="fa-solid fa-pen hover:text-green-600 cursor-pointer"></i>
-<i class="fa-solid fa-trash hover:text-red-600 cursor-pointer"></i>
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-</div>
-
-<script>
-
-function toggleSidebar(){
-document.getElementById("sidebar").classList.toggle("hidden");
-}
-
-function showTab(tab){
-
-document.querySelectorAll("button[id^='tab']").forEach(btn=>{
-btn.classList.remove("border-red-500","text-red-500","font-semibold")
-})
-
-document.getElementById("tab-"+tab)
-.classList.add("border-red-500","text-red-500","font-semibold")
-
-}
-
-</script>
-
+                    
+                    <div class="pt-6 pb-2 px-3">
+                        <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider">System</p>
+                    </div>
+                    
+                    <a href="#" class="flex items-center space-x-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 hover:font-bold rounded-lg text-sm font-medium transition-all">
+                        <i data-lucide="settings" class="w-5 h-5 text-gray-400"></i>
+                        <span>Settings</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 hover:font-bold rounded-lg text-sm font-medium transition-all">
+                        <i data-lucide="log-out" class="w-5 h-5 text-gray-400"></i>
+                        <span>Logout</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="px-4">
+                <div class="bg-red-50 p-3 rounded-xl flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-red-200 rounded-full flex items-center justify-center text-red-700 font-bold">AH</div>
+                    <div>
+                        <p class="text-sm font-bold text-gray-800">Alex Hiraya</p>
+                        <p class="text-xs text-gray-500">Super Admin</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-1 flex flex-col h-screen overflow-y-auto">
+            
+            <header class="bg-white border-b border-gray-100 px-4 md:px-6 py-4 flex flex-col space-y-4 md:space-y-0 md:flex-row md:items-center md:justify-between">
+                <div class="flex items-center justify-between md:justify-start md:space-x-4">
+                    <div class="flex items-center space-x-4">
+                        <button id="menu-btn" class="lg:hidden text-gray-600 focus:outline-none">
+                            <i data-lucide="menu" class="w-6 h-6"></i>
+                        </button>
+                        <h2 class="text-xl font-bold text-gray-800">Applicants</h2>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4 md:hidden">
+                        <button class="relative text-gray-500 hover:text-gray-700">
+                            <i data-lucide="bell" class="w-5 h-5"></i>
+                            <span class="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                        </button>
+                        <div class="w-9 h-9 bg-amber-100 rounded-full flex items-center justify-center text-amber-700 font-bold">AU</div>
+                    </div>
+                </div>
+
+                <div class="relative block md:hidden w-full">
+                    <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute left-3 top-3"></i>
+                    <input type="text" placeholder="Search candidates..." class="pl-10 pr-4 py-2 bg-gray-50 border border-gray-100 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-red-300 w-full">
+                </div>
+
+                <div class="hidden md:flex items-center space-x-6">
+                    <div class="relative hidden md:block">
+                        <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute left-3 top-3"></i>
+                        <input type="text" placeholder="Search candidates..." class="pl-10 pr-4 py-2 bg-gray-50 border border-gray-100 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-red-300 w-64">
+                    </div>
+                    
+                    <button class="relative text-gray-500 hover:text-gray-700">
+                        <i data-lucide="bell" class="w-5 h-5"></i>
+                        <span class="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                    </button>
+
+                    <div class="flex items-center space-x-3">
+                        <div class="text-right hidden sm:block">
+                            <p class="text-sm font-bold text-gray-800">Admin User</p>
+                            <p class="text-xs text-gray-500">Super Admin</p>
+                        </div>
+                        <div class="w-9 h-9 bg-amber-100 rounded-full flex items-center justify-center text-amber-700 font-bold">AU</div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="p-6 space-y-6">
+                
+                <div class="border-b border-gray-200">
+                    <nav class="flex space-x-6">
+                        <a href="#" class="pb-3 border-b-2 border-red-700 text-red-700 font-semibold text-sm">Active</a>
+                        <a href="#" class="pb-3 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm">Archived</a>
+                        <a href="#" class="pb-3 border-b-2 border-transparent text-gray-500 hover:text-gray-700 font-medium text-sm">Shortlisted</a>
+                    </nav>
+                </div>
+
+                <div class="bg-white border border-gray-100 rounded-xl overflow-hidden">
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-gray-50 text-xs text-gray-400 uppercase tracking-wider">
+                                <tr>
+                                    <th class="px-6 py-4 font-semibold">Applicant Name</th>
+                                    <th class="px-6 py-4 font-semibold">Email</th>
+                                    <th class="px-6 py-4 font-semibold">Skills</th>
+                                    <th class="px-6 py-4 font-semibold">Applied Job</th>
+                                    <th class="px-6 py-4 font-semibold">Status</th>
+                                    <th class="px-6 py-4 font-semibold">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-50 text-sm">
+                                
+                                <tr class="hover:bg-gray-50/50">
+                                    <td class="px-6 py-4 flex items-center space-x-3">
+                                        <div class="w-9 h-9 bg-red-50 text-red-700 font-semibold rounded-full flex items-center justify-center">JD</div>
+                                        <span class="font-bold text-gray-800">Juan Dela Cruz</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-500">juan.dc@email.com</td>
+                                    <td class="px-6 py-4 flex flex-wrap gap-1">
+                                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">React</span>
+                                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">Node.js</span>
+                                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">AWS</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-600">Senior Developer</td>
+                                    <td class="px-6 py-4">
+                                        <span class="bg-emerald-50 text-emerald-600 text-xs font-semibold px-2.5 py-1 rounded-md">Shortlisted</span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex space-x-2 text-gray-400">
+                                            <button class="hover:text-gray-600"><i data-lucide="eye" class="w-4 h-4"></i></button>
+                                            <button class="hover:text-gray-600"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+                                            <button class="hover:text-red-500"><i data-lucide="ban" class="w-4 h-4"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr class="hover:bg-gray-50/50">
+                                    <td class="px-6 py-4 flex items-center space-x-3">
+                                        <div class="w-9 h-9 bg-blue-50 text-blue-700 font-semibold rounded-full flex items-center justify-center">MC</div>
+                                        <span class="font-bold text-gray-800">Maria Clara</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-500">m.clara@email.com</td>
+                                    <td class="px-6 py-4 flex flex-wrap gap-1">
+                                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">Figma</span>
+                                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">UI/UX</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-600">Product Designer</td>
+                                    <td class="px-6 py-4">
+                                        <span class="bg-amber-50 text-amber-600 text-xs font-semibold px-2.5 py-1 rounded-md">ReviewUnder</span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex space-x-2 text-gray-400">
+                                            <button class="hover:text-gray-600"><i data-lucide="eye" class="w-4 h-4"></i></button>
+                                            <button class="hover:text-gray-600"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+                                            <button class="hover:text-red-500"><i data-lucide="ban" class="w-4 h-4"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr class="hover:bg-gray-50/50">
+                                    <td class="px-6 py-4 flex items-center space-x-3">
+                                        <div class="w-9 h-9 bg-gray-100 text-gray-700 font-semibold rounded-full flex items-center justify-center">JR</div>
+                                        <span class="font-bold text-gray-800">Jose Rizal</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-500">j.rizal@email.com</td>
+                                    <td class="px-6 py-4 flex flex-wrap gap-1">
+                                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">Python</span>
+                                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">SQL</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-600">Data Analyst</td>
+                                    <td class="px-6 py-4">
+                                        <span class="bg-blue-50 text-blue-600 text-xs font-semibold px-2.5 py-1 rounded-md">New</span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex space-x-2 text-gray-400">
+                                            <button class="hover:text-gray-600"><i data-lucide="eye" class="w-4 h-4"></i></button>
+                                            <button class="hover:text-gray-600"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+                                            <button class="hover:text-red-500"><i data-lucide="ban" class="w-4 h-4"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr class="hover:bg-gray-50/50">
+                                    <td class="px-6 py-4 flex items-center space-x-3">
+                                        <div class="w-9 h-9 bg-purple-50 text-purple-700 font-semibold rounded-full flex items-center justify-center">LR</div>
+                                        <span class="font-bold text-gray-800">Leonor Rivera</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-500">l.rivera@email.com</td>
+                                    <td class="px-6 py-4 flex flex-wrap gap-1">
+                                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">Salesforce</span>
+                                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">CRM</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-600">Sales Lead</td>
+                                    <td class="px-6 py-4">
+                                        <span class="bg-red-50 text-red-600 text-xs font-semibold px-2.5 py-1 rounded-md">Interviewed</span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex space-x-2 text-gray-400">
+                                            <button class="hover:text-gray-600"><i data-lucide="eye" class="w-4 h-4"></i></button>
+                                            <button class="hover:text-gray-600"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+                                            <button class="hover:text-red-500"><i data-lucide="ban" class="w-4 h-4"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr class="hover:bg-gray-50/50">
+                                    <td class="px-6 py-4 flex items-center space-x-3">
+                                        <div class="w-9 h-9 bg-orange-50 text-orange-700 font-semibold rounded-full flex items-center justify-center">SM</div>
+                                        <span class="font-bold text-gray-800">Sanya Malhotra</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-500">s.malhotra@email.com</td>
+                                    <td class="px-6 py-4 flex flex-wrap gap-1">
+                                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">Project Management</span>
+                                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">Agile</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-600">Senior Project Manager</td>
+                                    <td class="px-6 py-4">
+                                        <span class="bg-emerald-50 text-emerald-600 text-xs font-semibold px-2.5 py-1 rounded-md">Shortlisted</span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex space-x-2 text-gray-400">
+                                            <button class="hover:text-gray-600"><i data-lucide="eye" class="w-4 h-4"></i></button>
+                                            <button class="hover:text-gray-600"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+                                            <button class="hover:text-red-500"><i data-lucide="ban" class="w-4 h-4"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr class="hover:bg-gray-50/50">
+                                    <td class="px-6 py-4 flex items-center space-x-3">
+                                        <div class="w-9 h-9 bg-blue-50 text-blue-700 font-semibold rounded-full flex items-center justify-center">DC</div>
+                                        <span class="font-bold text-gray-800">David Chen</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-500">d.chen@email.com</td>
+                                    <td class="px-6 py-4 flex flex-wrap gap-1">
+                                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">Python</span>
+                                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">Machine Learning</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-600">Data Scientist</td>
+                                    <td class="px-6 py-4">
+                                        <span class="bg-blue-50 text-blue-600 text-xs font-semibold px-2.5 py-1 rounded-md">New</span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex space-x-2 text-gray-400">
+                                            <button class="hover:text-gray-600"><i data-lucide="eye" class="w-4 h-4"></i></button>
+                                            <button class="hover:text-gray-600"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+                                            <button class="hover:text-red-500"><i data-lucide="ban" class="w-4 h-4"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr class="hover:bg-gray-50/50">
+                                    <td class="px-6 py-4 flex items-center space-x-3">
+                                        <div class="w-9 h-9 bg-pink-50 text-pink-700 font-semibold rounded-full flex items-center justify-center">AK</div>
+                                        <span class="font-bold text-gray-800">Aisha Khan</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-500">a.khan@email.com</td>
+                                    <td class="px-6 py-4 flex flex-wrap gap-1">
+                                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">Graphic Design</span>
+                                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">Adobe CC</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-600">Creative Lead</td>
+                                    <td class="px-6 py-4">
+                                        <span class="bg-red-50 text-red-600 text-xs font-semibold px-2.5 py-1 rounded-md">Interviewed</span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex space-x-2 text-gray-400">
+                                            <button class="hover:text-gray-600"><i data-lucide="eye" class="w-4 h-4"></i></button>
+                                            <button class="hover:text-gray-600"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+                                            <button class="hover:text-red-500"><i data-lucide="ban" class="w-4 h-4"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr class="hover:bg-gray-50/50">
+                                    <td class="px-6 py-4 flex items-center space-x-3">
+                                        <div class="w-9 h-9 bg-emerald-50 text-emerald-700 font-semibold rounded-full flex items-center justify-center">MR</div>
+                                        <span class="font-bold text-gray-800">Marco Rossi</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-500">m.rossi@email.com</td>
+                                    <td class="px-6 py-4 flex flex-wrap gap-1">
+                                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">Java</span>
+                                        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">Spring Boot</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-600">Backend Engineer</td>
+                                    <td class="px-6 py-4">
+                                        <span class="bg-gray-100 text-gray-500 text-xs font-semibold px-2.5 py-1 rounded-md">Rejected</span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex space-x-2 text-gray-400">
+                                            <button class="hover:text-gray-600"><i data-lucide="eye" class="w-4 h-4"></i></button>
+                                            <button class="hover:text-gray-600"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+                                            <button class="hover:text-red-500"><i data-lucide="ban" class="w-4 h-4"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="px-6 py-4 flex flex-col sm:flex-row justify-between items-center border-t border-gray-50 space-y-4 sm:space-y-0">
+                        <p class="text-sm text-gray-500">Showing <span class="font-medium text-gray-800">1 to 8</span> of <span class="font-medium text-gray-800">24</span> applicants</p>
+                        
+                        <div class="flex items-center space-x-1">
+                            <button class="p-2 border border-gray-200 rounded-lg text-gray-400 hover:bg-gray-50">
+                                <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                            </button>
+                            <button class="w-9 h-9 bg-red-800 text-white rounded-lg text-sm font-medium">1</button>
+                            <button class="w-9 h-9 border border-gray-200 text-gray-600 hover:bg-gray-50 rounded-lg text-sm font-medium">2</button>
+                            <button class="w-9 h-9 border border-gray-200 text-gray-600 hover:bg-gray-50 rounded-lg text-sm font-medium">3</button>
+                            <button class="p-2 border border-gray-200 rounded-lg text-gray-400 hover:bg-gray-50">
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+
+        <div id="overlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden"></div>
+    </div>
+
+   <script>
+        // 1. Initialize Lucide icons
+        lucide.createIcons();
+
+        // 2. Mobile Sidebar Toggle Logic
+        const menuBtn = document.getElementById('menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        function toggleSidebar() {
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+        }
+
+        menuBtn.addEventListener('click', toggleSidebar);
+        overlay.addEventListener('click', toggleSidebar);
+
+        // 3. Search Functionality
+        // Kinukuha natin ang dalawang search input (Mobile at Desktop)
+        const searchInputs = document.querySelectorAll('input[placeholder="Search candidates..."]');
+        // Kinukuha natin ang lahat ng rows sa loob ng table body
+        const tableRows = document.querySelectorAll('tbody tr');
+
+        searchInputs.forEach(input => {
+            input.addEventListener('input', function(e) {
+                const searchPrompt = e.target.value.toLowerCase().trim();
+
+                // I-sync ang text ng mobile at desktop search bar
+                searchInputs.forEach(otherInput => {
+                    if (otherInput !== input) {
+                        otherInput.value = e.target.value;
+                    }
+                });
+
+                tableRows.forEach(row => {
+                    // Kinukuha natin ang pangalan ng applicant sa unang cell (td) ng row
+                    const applicantName = row.querySelector('td:first-child span.font-bold').textContent.toLowerCase();
+                    
+                    // Kung kasama ang tinype sa pangalan, ipakita. Kung hindi, itago gamit ang Tailwind class na 'hidden'
+                    if (applicantName.includes(searchPrompt)) {
+                        row.classList.remove('hidden');
+                    } else {
+                        row.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
