@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="bg-[#FCF8F8] font-sans">
+
+<div class="flex h-screen overflow-hidden">
+
+<!-- Sidebar navigation -->
+<aside class="w-64 bg-white shadow-md hidden md:flex flex-col">
+<div class="p-6 text-xl font-bold text-red-900">
+HirayaCareer
+</div>
+    
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-3 p-3 rounded-lg bg-red-200 text-red-900 font-medium">
+<i class="fa-solid fa-chart-line"></i> Dashboard
+</a>
+  
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100">
+<i class="fa-solid fa-briefcase"></i> Job Posting
+</a>
+  
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100">
+<i class="fa-solid fa-users"></i> Applicants
+</a>
+  
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100">
+<i class="fa-solid fa-building"></i> Company Profile
+</a>
+
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100">
+<i class="fa-solid fa-gear"></i> Settings
+</a>
+</nav>
+
+<div class="p-4">
+<button class="w-full flex items-center justify-center gap-2 bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition">
+<i class="fa-solid fa-right-from-bracket"></i> Logout
+
+</button>
+</div>
+</aside>
+
+<!-- Mobile -->
+<div id="mobileSidebar" class="fixed inset-y-0 left-0 w-64 bg-white shadow-md transform -translate-x-full transition-transform duration-300 md:hidden z-50 flex flex-col">
+<div class="p-6 text-xl font-bold text-red-900 flex justify-between items-center">
+HirayaCareer
+<button onclick="toggleSidebar()" class="text-gray-600 hover:text-gray-900">
+    ✕
+</button>
+</div>
+
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-3 p-3 rounded-lg bg-red-200 text-red-900 font-medium">
+<i class="fa-solid fa-chart-line"></i> Dashboard
+</a>
+  
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100">
+<i class="fa-solid fa-briefcase"></i> Job Posting
+</a>
+
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100">
+<i class="fa-solid fa-users"></i> Applicants
+</a>
+
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100">
+<i class="fa-solid fa-building"></i> Company Profile
+</a>
+
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100">
+<i class="fa-solid fa-gear"></i> Settings</a>
+</nav>
+
+<div class="p-4 mt-auto">
+
+<button class="w-full flex items-center justify-center gap-2 bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition">
+<i class="fa-solid fa-right-from-bracket"></i> Logout
+
+</button>
+</div>
+</div>
+
+<!-- Main Content -->
+<div class="flex-1 flex flex-col overflow-y-auto">
+
+<header class="bg-white shadow p-4 flex flex-wrap items-center justify-between gap-4">
+
+<button onclick="toggleSidebar()" class="md:hidden text-gray-600 hover:text-gray-900">
+<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+    
+</svg>
+</button>
+
+<div class="flex items-center border rounded-xl px-2 flex-1 min-w-0">
+    
+<input id="searchInput" type="text" placeholder="Search by name or position..." class="flex-1 min-w-0 px-2 py-2 outline-none truncate" />
+
+<select id="statusFilter" class="px-2 py-2 bg-transparent outline-none text-gray-600 text-sm">
+
+<option value="">All Status</option>
+<option value="Interviewing">Interviewing</option>
+<option value="New Applied">New Applied</option>
+<option value="Shortlisted">Shortlisted</option>
+
+</select>
+</div>
+
+<div class="flex items-center gap-4 flex-shrink-0">
+<span class="text-gray-500 truncate">Tech Solutions Ltd.</span>
+<div class="w-10 h-10 bg-gray-300 rounded-full"></div>
+
+</div>
+</header>
+
+<script>
+function filterTable() {
+const query = document.getElementById("searchInput").value.toLowerCase();
+const status = document.getElementById("statusFilter").value;
+const rows = document.querySelectorAll("tbody tr");
+
+rows.forEach(row => {
+const text = row.innerText.toLowerCase();
+const statusText = row.querySelector("td:nth-child(3)").innerText;
+const matchesSearch = text.includes(query);
+const matchesStatus = !status || statusText.includes(status);
+
+row.style.display = (matchesSearch && matchesStatus) ? "" : "none";
+});
+}
+
+document.getElementById("searchInput").addEventListener("keyup", filterTable);
+document.getElementById("statusFilter").addEventListener("change", filterTable);
+</script>
+
+
+<script>
+function toggleSidebar() {
+const sidebar = document.getElementById("mobileSidebar");
+if (sidebar.classList.contains("-translate-x-full")) {
+    sidebar.classList.remove("-translate-x-full");
+} else {
+sidebar.classList.add("-translate-x-full");
+}
+}
+</script>
+
+<!-- Content -->
+<main class="p-6 space-y-6">
+<div>
+    <h1 class="text-2xl font-bold">Dashboard Overview</h1>
+    <p class="text-gray-500">Track your recruitment performance</p>
+</div>
+
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white p-6 rounded-xl shadow"> 
+    
+<p class="text-gray-500">Total Jobs Posted</p>
+<h2 class="text-3xl font-bold">0</h2>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<p class="text-gray-500">Active Applications</p>
+<h2 class="text-3xl font-bold">0</h2>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<p class="text-gray-500">Interviews Scheduled</p>
+<h2 class="text-3xl font-bold">0</h2>
+</div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+<!-- Table -->
+<div class="lg:col-span-2 bg-white rounded-xl shadow p-6">
+<div class="flex justify-between mb-4">
+    
+<h2 class="font-semibold">Recent Candidates</h2>
+<a class="text-red-500 text-sm">View All</a>
+</div>
+
+<div class="overflow-x-auto">
+<table class="w-full text-sm">
+<thead class="text-gray-400">
+<tr>
+    <th class="text-left py-2">Name</th>
+    <th class="text-left">Position</th>
+    <th class="text-left">Status</th>
+    <th class="text-right">Action</th>
+</tr>
+</thead> 
+
+<tbody class="space-y-4">
+<tr class="border-t">
+<td class="py-3">Sarah Jenkins</td>
+<td>Senior UI Designer</td>
+<td><span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">Interviewing</span></td>
+<td class="text-right">
+<button onclick="openModal(this.closest('tr'))" class="text-gray-500 hover:text-gray-700 text-xl">
+    ⋮
+</button>
+</td>
+</tr>
+
+<tr class="border-t">
+<td class="py-3">Michael Chen</td>
+<td>Backend Engineer</td>
+<td><span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">New Applied</span></td>
+<td class="text-right">
+<button onclick="openModal(this.closest('tr'))" class="text-gray-500 hover:text-gray-700 text-xl">
+    ⋮
+</button>
+</td>
+</tr>
+
+<tr class="border-t">
+<td class="py-3">Elena Rodriguez</td>
+<td>Product Manager</td>
+<td><span class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm">Shortlisted</span></td>
+<td class="text-right">
+<button onclick="openModal(this.closest('tr'))" class="text-gray-500 hover:text-gray-700 text-xl">
+    ⋮
+</button>
+</td>
+
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="actionModal" class="fixed inset-0 bg-black/30 backdrop-blur-sm hidden items-center justify-center z-50">
+
+<div class="bg-white w-80 rounded-xl shadow-lg p-6 text-center">
+
+<h2 id="modalName" class="text-lg font-semibold mb-1"></h2>
+<p id="modalPosition" class="text-sm text-gray-400 mb-4"></p>
+
+<div class="space-y-3">
+<button class="w-full py-2 rounded-lg hover:bg-gray-100">View</button>
+<button onclick="openEditModal()" class="w-full py-2 rounded-lg hover:bg-gray-100">Edit</button>
+
+<!-- Side-by-side buttons -->
+<div class="flex gap-3 mt-3">
+<button onclick="deleteCandidate()" class="flex-1 py-2 rounded-lg text-red-500 hover:bg-gray-100">Delete</button>
+<button onclick="closeModal()" class="flex-1 py-2 rounded-lg text-gray-500 hover:bg-gray-100">
+    Cancel
+</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Edit Modal -->
+<div id="editModal" class="fixed inset-0 bg-black/30 backdrop-blur-sm hidden items-center justify-center z-50">
+<div class="bg-white w-96 rounded-xl shadow-lg p-6">
+
+<h2 class="text-lg font-semibold mb-4">Edit Candidate</h2>
+
+<form id="editForm" class="space-y-4">
+
+<div>
+<label class="block text-sm font-medium text-gray-600">Name</label>
+<input id="editName" type="text" class="w-full border rounded px-3 py-2" />
+</div>
+
+<div>
+<label class="block text-sm font-medium text-gray-600">Position</label>
+<input id="editPosition" type="text" class="w-full border rounded px-3 py-2" />
+</div>
+
+<div>
+<label class="block text-sm font-medium text-gray-600">Status</label>
+<select id="editStatus" class="w-full border rounded px-3 py-2">
+
+<option>Interviewing</option>
+<option>New Applied</option>
+<option>Shortlisted</option>
+
+</select>
+</div>
+
+<!-- Buttons -->
+<div class="flex justify-end gap-3 mt-4">
+<button type="button" onclick="closeEditModal()" class="px-4 py-2 rounded bg-gray-200">Cancel</button>
+<button type="submit" class="px-4 py-2 rounded bg-red-500 text-white">Save</button>
+
+</div>
+</form>
+</div>
+</div>
+
+
+<script>
+let currentRow = null;
+
+function openModal(row) {
+currentRow = row;
+document.getElementById("modalName").innerText = row.cells[0].innerText;
+document.getElementById("modalPosition").innerText = row.cells[1].innerText;
+
+const modal = document.getElementById("actionModal");
+modal.classList.remove("hidden");
+modal.classList.add("flex");
+}
+
+function closeModal() {
+const modal = document.getElementById("actionModal");
+modal.classList.add("hidden");
+modal.classList.remove("flex");
+}
+
+
+function openEditModal() {
+if (!currentRow) return;
+document.getElementById("editName").value = currentRow.cells[0].innerText;
+document.getElementById("editPosition").value = currentRow.cells[1].innerText;
+document.getElementById("editStatus").value = currentRow.cells[2].innerText.trim();
+
+closeModal(); // close action modal first
+const editModal = document.getElementById("editModal");
+editModal.classList.remove("hidden");
+editModal.classList.add("flex");
+}
+
+function closeEditModal() {
+const editModal = document.getElementById("editModal");
+editModal.classList.add("hidden");
+editModal.classList.remove("flex");
+}
+
+// Save edits
+document.getElementById("editForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  if (currentRow) {
+currentRow.cells[0].innerText = document.getElementById("editName").value;
+currentRow.cells[1].innerText = document.getElementById("editPosition").value;
+currentRow.cells[2].innerText = document.getElementById("editStatus").value;
+  }
+closeEditModal();
+});
+
+// Delete candidate
+function deleteCandidate() {
+if (currentRow) {
+    currentRow.remove();
+    currentRow = null;
+}
+  closeModal();
+}
+</script>
+
+<!-- Performance -->
+<div class="bg-white rounded-xl shadow p-6">
+<h2 class="font-semibold mb-4">Performance</h2>
+
+<p class="text-gray-500 text-sm mb-2">Application Growth</p>
+<div class="w-full bg-gray-200 h-2 rounded-full">
+
+<div class="bg-green-500 h-2 rounded-full w-3/4"></div>
+</div>
+
+<p class="text-green-600 text-sm mt-2">+24%</p>
+</div>
+</div>
+    </main>
+        </div>
+        </div>
+</body>
+</html>

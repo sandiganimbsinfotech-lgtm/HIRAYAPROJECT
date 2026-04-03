@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HirayaCareer Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="bg-[#FCF8F8] font-sans">
+
+<div class="flex h-screen overflow-hidden">
+
+<!-- Sidebar navigation -->
+<aside class="w-64 bg-white shadow-md hidden md:flex flex-col">
+<div class="p-6 text-xl font-bold text-red-900">
+HirayaCareer
+</div>
+    
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-3 p-3 rounded-lg bg-red-200 text-red-900 font-medium">
+<i class="fa-solid fa-chart-line"></i> Dashboard
+</a>
+  
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100">
+<i class="fa-solid fa-briefcase"></i> Job Posting
+</a>
+  
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100">
+<i class="fa-solid fa-users"></i> Applicants
+</a>
+  
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100">
+<i class="fa-solid fa-building"></i> Company Profile
+</a>
+  
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100">
+<i class="fa-solid fa-gear"></i> Settings
+</a>
+
+</nav>
+
+<div class="p-4">
+<button class="w-full flex items-center justify-center gap-2 bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition">
+    <i class="fa-solid fa-right-from-bracket"></i> Logout
+</button>
+</div>
+</aside>
+
+<!-- Mobile-->
+
+<div id="mobileSidebar" class="fixed inset-y-0 left-0 w-64 bg-white shadow-md transform -translate-x-full transition-transform duration-300 md:hidden z-50 flex flex-col">
+<div class="p-6 text-xl font-bold text-red-900 flex justify-between items-center">
+HirayaCareer
+<button onclick="toggleSidebar()" class="text-gray-600 hover:text-gray-900"> ✕ </button>
+</div>
+
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-3 p-3 rounded-lg bg-red-200 text-red-900 font-medium">
+<i class="fa-solid fa-chart-line"></i> Dashboard
+</a>
+  
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100">
+<i class="fa-solid fa-briefcase"></i> Job Posting
+</a>
+  
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100">
+<i class="fa-solid fa-users"></i> Applicants
+</a>
+  
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100">
+<i class="fa-solid fa-building"></i> Company Profile
+</a>
+  
+<a class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100">
+<i class="fa-solid fa-gear"></i> Settings
+</a>
+
+</nav>
+
+<div class="p-4 mt-auto">
+
+<button class="w-full flex items-center justify-center gap-2 bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition">
+<i class="fa-solid fa-right-from-bracket"></i> Logout
+
+</button>
+</div>
+</div>
+
+<!-- Main Content -->
+<div class="flex-1 flex flex-col overflow-y-auto">
+
+<header class="bg-white shadow p-4 flex flex-wrap items-center justify-between gap-4">
+<button onclick="toggleSidebar()" class="md:hidden text-gray-600 hover:text-gray-900">
+<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+</svg>
+</button>
+
+<div class="flex items-center border rounded-xl px-2 flex-1 min-w-0">
+<input id="searchInput" type="text" placeholder="Search by name or position..." class="flex-1 min-w-0 px-2 py-2 outline-none truncate" />
+    
+<select id="statusFilter" class="px-2 py-2 bg-transparent outline-none text-gray-600 text-sm">
+<option value="">All Status</option>
+<option value="ACTIVE">ACTIVE</option>
+<option value="DRAFT">DRAFT</option>
+<option value="CLOSED">CLOSED</option>
+    </select>
+  </div>
+
+<div class="flex items-center gap-4 flex-shrink-0">
+<span class="text-gray-500 truncate">Tech Solutions Ltd.</span>
+<div class="w-10 h-10 bg-gray-300 rounded-full"></div>
+</div>
+</header>
+
+
+<script>
+function filterTable() {
+  const query = document.getElementById("searchInput").value.toLowerCase();
+  const status = document.getElementById("statusFilter").value;
+  const rows = document.querySelectorAll("tbody tr");
+
+  rows.forEach(row => {
+    const text = row.innerText.toLowerCase();
+    const statusText = row.querySelector("td:nth-child(2)").innerText; // <-- fixed
+    const matchesSearch = text.includes(query);
+    const matchesStatus = !status || statusText.includes(status);
+
+    row.style.display = (matchesSearch && matchesStatus) ? "" : "none";
+  });
+}
+
+document.getElementById("searchInput").addEventListener("keyup", filterTable);
+document.getElementById("statusFilter").addEventListener("change", filterTable);
+</script>
+
+
+
+<script>
+function toggleSidebar() {
+const sidebar = document.getElementById("mobileSidebar");
+if (sidebar.classList.contains("-translate-x-full")) {
+    sidebar.classList.remove("-translate-x-full");
+} else {
+sidebar.classList.add("-translate-x-full");
+}
+}
+</script>
+
+
+<!-- Content -->
+<main class="flex-1 p-6">
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+    
+<div class="bg-white p-4 rounded-xl shadow flex items-center space-x-3">
+<i class="fa-solid fa-file text-red-500 text-3xl"></i>
+
+<div>
+
+<p class="text-gray-500">Active Postings</p>
+<p class="text-2xl font-bold">4</p>
+    
+</div>
+</div>
+
+<div class="bg-white p-4 rounded-xl shadow flex items-center space-x-3">
+<i class="fa-solid fa-file-pen text-red-500 text-3xl"></i>  
+<div>
+<p class="text-gray-500">New Applications</p>
+<p class="text-2xl font-bold">28</p>
+</div>
+</div>
+
+<div class="bg-white p-4 rounded-xl shadow flex items-center space-x-3">
+<i class="fa-solid fa-microphone text-red-500 text-3xl"></i>
+<div>
+
+<p class="text-gray-500">Interviews Today</p>
+<p class="text-2xl font-bold">3</p>
+</div>
+</div>
+</div>
+
+<div class="bg-white rounded-xl shadow overflow-x-auto">
+<div class="flex justify-between items-center p-4 border-b">
+
+<h3 class="text-lg font-bold">Job Postings</h3>
+<button class="bg-red-500 text-white px-4 py-2 rounded-xl hover:bg-red-600">+ Post a New Job</button>
+</div>
+      
+<table class="min-w-full text-left">
+<thead>
+<tr class="border-b">
+            
+<th class="px-4 py-2">Job Title</th>
+<th class="px-4 py-2">Status</th>
+<th class="px-4 py-2">Applications</th>
+<th class="px-4 py-2">Date Posted</th>
+<th class="px-4 py-2">Actions</th>
+          
+</tr>
+</thead>
+
+<tbody id="job-table-body">
+<tr class="border-c">
+<td class="px-4 py-2">Senior Product Designer</td>
+<td><span class="px-4 py-2 rounded-full text-xs font-semibold bg-green-100 text-green-700">ACTIVE</span></td>
+<td class="px-4 py-2">42 (12 NEW)</td>
+<td class="px-4 py-2">Oct 24, 2023</td>
+<td class="px-4 py-2">
+<button onclick="openModal()" class="p-2 hover:bg-gray-100 rounded-xl">⋮</button>
+
+</td>
+</tr>
+          
+<tr class="border-c">
+<td class="px-4 py-2">Marketing Specialist</td>
+<td><span class="px-4 py-2 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-700">DRAFT</span></td>
+<td class="px-4 py-2">0</td>
+<td class="px-4 py-2">Oct 24, 2023</td>
+<td class="px-4 py-2">
+<button onclick="openModal()" class="p-2 hover:bg-gray-100 rounded-xl">⋮</button>
+            
+</td>
+</tr>
+
+<tr class="border-c">
+<td class="px-4 py-2">Senior Backend Engineer</td>
+<td><span class="px-4 py-2 rounded-full text-xs font-semibold bg-green-100 text-green-700">ACTIVE</span></td>
+<td class="px-4 py-2">18 (4 NEW)</td>
+<td class="px-4 py-2">Oct 24, 2023</td>
+<td class="px-4 py-2">
+<button onclick="openModal()" class="p-2 hover:bg-gray-100 rounded-xl">⋮</button>
+            
+</td>
+</tr>
+
+<tr class="border-b">
+<td class="px-4 py-2">Human Resources Manager</td>
+<td><span class="px-4 py-2 rounded-full text-xs font-semibold bg-gray-100 text-gray-700">CLOSED</span></td>
+<td class="px-4 py-2">66</td>
+<td class="px-4 py-2">Oct 24, 2023</td>
+<td class="px-4 py-2">
+<button onclick="openModal()" class="p-2 hover:bg-gray-100 rounded-xl">⋮</button>
+            
+</td>
+</tr>
+</tbody>
+</table>
+
+<div class="flex justify-between items-center p-4">
+<p id="pagination-info" class="text-sm text-gray-500">SHOWING 1 TO 4 OF 12 JOB POSTINGS</p>
+  
+<div class="flex space-x-2">
+    <button onclick="prevPage()" class="px-3 py-1 border rounded-xl hover:bg-gray-200">&lt;</button>
+    <button onclick="goToPage(1)" id="page-1" class="px-3 py-1 border rounded-xl bg-blue-500 text-white">1</button>
+    <button onclick="goToPage(2)" id="page-2" class="px-3 py-1 border rounded-xl hover:bg-gray-200">2</button>
+    <button onclick="goToPage(3)" id="page-3" class="px-3 py-1 border rounded-xl hover:bg-gray-200">3</button>
+    <button onclick="nextPage()" class="px-3 py-1 border rounded-xl hover:bg-gray-200">&gt;</button>
+</div>
+</div>
+
+<script>
+  const totalItems = 12;
+  const itemsPerPage = 4;
+  let currentPage = 1;
+
+  function updatePagination() {
+    const start = (currentPage - 1) * itemsPerPage + 1;
+    const end = Math.min(currentPage * itemsPerPage, totalItems);
+    document.getElementById("pagination-info").innerText =
+      `SHOWING ${start} TO ${end} OF ${totalItems} JOB POSTINGS`;
+
+    // highlight active page
+    for (let i = 1; i <= 3; i++) {
+      const btn = document.getElementById(`page-${i}`);
+      if (i === currentPage) {
+        btn.classList.add("bg-blue-500", "text-white");
+      } else {
+        btn.classList.remove("bg-blue-500", "text-white");
+      }
+    }
+
+    // dito mo rin pwedeng i-update yung laman ng card/list
+    // halimbawa: renderJobsForPage(currentPage);
+  }
+
+  function goToPage(page) {
+    currentPage = page;
+    updatePagination();
+  }
+
+  function prevPage() {
+    if (currentPage > 1) {
+      currentPage--;
+      updatePagination();
+    }
+  }
+
+  function nextPage() {
+    if (currentPage < Math.ceil(totalItems / itemsPerPage)) {
+      currentPage++;
+      updatePagination();
+    }
+  }
+  updatePagination();
+</script>
+
+
+
+<div id="actionModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+<div class="bg-white rounded-xl shadow p-6 w-80">
+<h4 class="text-lg font-bold flex items-center justify-center mb-4">Actions</h4>
+      
+<div class="space-y-2">
+<button class="w-full bg-blue-500 text-white py-2 rounded-xl hover:bg-blue-600">Edit</button>
+<button class="w-full bg-red-500 text-white py-2 rounded-xl hover:bg-red-600">Delete</button>
+<button onclick="closeModal()" class="w-full bg-gray-300 py-2 rounded-xl hover:bg-gray-400">Cancel</button>
+      
+</div>
+</div>
+</div>
+
+<script>
+function openModal() {
+    document.getElementById('actionModal').classList.remove('hidden');
+}
+function closeModal() {
+    document.getElementById('actionModal').classList.add('hidden');
+}
+</script>
+</body>
+</html>
