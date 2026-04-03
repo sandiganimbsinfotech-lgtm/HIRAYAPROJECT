@@ -8,8 +8,19 @@
 
 <script src="https://cdn.tailwindcss.com"></script>
 
+<style>
+    /* Custom toggle switch styles to match your theme */
+    .toggle-checkbox:checked {
+        right: 0;
+        border-color: #991b1b; /* Tailwind red-800 */
+    }
+    .toggle-checkbox:checked + .toggle-label {
+        background-color: #991b1b;
+    }
+</style>
 
- <script>
+<script>
+// Sidebar Toggle
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
@@ -18,6 +29,94 @@ function toggleSidebar() {
     overlay.classList.toggle('hidden');
 }
 
+// Wait for the DOM to fully load before attaching listeners
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // 1. SETTINGS SEARCH FILTER
+    const searchInput = document.getElementById('settingsSearch');
+    const settingCards = document.querySelectorAll('.settings-card');
+
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            
+            settingCards.forEach(card => {
+                const cardText = card.innerText.toLowerCase();
+                if (cardText.includes(term)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        });
+    }
+
+    // 2. SAVE CHANGES LOGIC
+    const saveBtn = document.getElementById('saveChangesBtn');
+    
+    if (saveBtn) {
+        saveBtn.addEventListener('click', () => {
+            const systemName = document.getElementById('systemName').value;
+            const webTitle = document.getElementById('webTitle').value;
+            
+            const maintenance = document.getElementById('toggleMaintenance').checked;
+            const registration = document.getElementById('toggleRegistration').checked;
+            const notifications = document.getElementById('toggleNotifications').checked;
+            const twoFa = document.getElementById('toggle2FA').checked;
+
+            console.log('Saving Data...', {
+                systemName, webTitle, maintenance, registration, notifications, twoFa
+            });
+
+            // Visual feedback
+            const originalText = saveBtn.innerText;
+            saveBtn.innerText = "Saving...";
+            saveBtn.classList.add('opacity-75');
+            
+            setTimeout(() => {
+                saveBtn.innerText = "Saved successfully!";
+                saveBtn.classList.remove('bg-red-800');
+                saveBtn.classList.add('bg-green-600');
+                
+                setTimeout(() => {
+                    saveBtn.innerText = originalText;
+                    saveBtn.classList.remove('bg-green-600', 'opacity-75');
+                    saveBtn.classList.add('bg-red-800');
+                }, 2000);
+            }, 1000);
+        });
+    }
+
+    // 3. DISCARD CHANGES LOGIC
+    const discardBtn = document.getElementById('discardBtn');
+    if (discardBtn) {
+        discardBtn.addEventListener('click', () => {
+            if (confirm('Are you sure you want to discard all changes?')) {
+                window.location.reload();
+            }
+        });
+    }
+
+    // 4. LOGO UPLOAD PREVIEW FEATURE
+    const logoInput = document.getElementById('logoInput');
+    const logoPreviews = document.querySelectorAll('.logo-preview');
+
+    if (logoInput) {
+        logoInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Update all images with 'logo-preview' class
+                    logoPreviews.forEach(img => {
+                        img.src = e.target.result;
+                    });
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+});
 </script>
 </head>
 
@@ -25,194 +124,247 @@ function toggleSidebar() {
 
 <div class="flex h-screen overflow-hidden">
 
-    <!-- SIDEBAR -->
-<aside id="sidebar"
-class="fixed z-40 inset-y-0 left-0 w-64 bg-white border-r transform -translate-x-full transition-transform duration-300
-md:relative md:translate-x-0 md:flex md:flex-col">
+    <aside id="sidebar"
+    class="fixed z-40 inset-y-0 left-0 w-64 bg-white border-r transform -translate-x-full transition-transform duration-300
+    md:relative md:translate-x-0 md:flex md:flex-col">
 
-    <!-- LOGO -->
-    <div class="p-4 flex items-center gap-3 border-b">
-        <img src="Hiraya2.png" class="w-10 h-10 rounded-full">
-        <div>
-            <h1 class="text-sm font-bold text-red-900">HIRAYA PURSUITS</h1>
-            <p class="text-xs text-gray-400">ADMIN CONSOLE</p>
+        <div class="p-4 flex items-center gap-3 border-b">
+            <img src="Hiraya2.png" class="logo-preview w-10 h-10 rounded-full object-cover" alt="Logo">
+            <div>
+                <h1 class="text-sm font-bold text-red-900">HIRAYA PURSUITS</h1>
+                <p class="text-xs text-gray-400">ADMIN CONSOLE</p>
+            </div>
         </div>
+
+        <nav class="flex-1 p-4 space-y-1 text-sm">
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded transition-colors duration-150 cursor-pointer text-gray-600 hover:text-gray-900 hover:font-medium group">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500 group-hover:text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                </svg>
+                Dashboard
+            </a>
+            
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded transition-colors duration-150 cursor-pointer text-gray-600 hover:text-gray-900 hover:font-medium group">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500 group-hover:text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                Applicants
+            </a>
+            
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded transition-colors duration-150 cursor-pointer text-gray-600 hover:text-gray-900 hover:font-medium group">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500 group-hover:text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0V9a2 2 0 012-2h2a2 2 0 012 2v12" />
+                </svg>
+                Employers
+            </a>
+            
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded transition-colors duration-150 cursor-pointer text-gray-600 hover:text-gray-900 hover:font-medium group">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500 group-hover:text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.206" />
+                </svg>
+                Jobs
+            </a>
+            
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded transition-colors duration-150 cursor-pointer text-gray-600 hover:text-gray-900 hover:font-medium group">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500 group-hover:text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                Roles
+            </a>
+
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded bg-red-50 text-red-800 font-semibold cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-red-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                Users
+            </a>
+
+            <div class="pt-5 pb-1 pl-3">
+                <p class="text-xs font-semibold text-gray-400 tracking-wider uppercase">System</p>
+            </div>
+
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded transition-colors duration-150 cursor-pointer text-gray-600 hover:text-gray-900 hover:font-medium group">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500 group-hover:text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                Settings
+            </a>
+
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded transition-colors duration-150 cursor-pointer text-gray-600 hover:text-gray-900 hover:font-medium group">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500 group-hover:text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                </svg>
+                Logout
+            </a>
+        </nav>
+
+        <div class="p-4 border-t flex items-center gap-3 bg-red-50 m-3 rounded-lg">
+            <div class="w-8 h-8 bg-red-200 rounded-full"></div>
+            <div>
+                <p class="text-sm font-bold text-red-900">Alex Hiraya</p>
+                <p class="text-xs text-gray-500">Super Admin</p>
+            </div>
+        </div>
+
+    </aside>
+
+    <div id="overlay"
+        class="fixed inset-0 bg-black bg-opacity-30 hidden z-30 md:hidden"
+        onclick="toggleSidebar()">
     </div>
 
-    <!-- NAV -->
-    <nav class="flex-1 p-4 space-y-2 text-sm">
-        <a class="block px-3 py-2 rounded hover:bg-gray-100">Dashboard</a>
-        <a class="block px-3 py-2 rounded hover:bg-gray-100">Applicants</a>
-        <a class="block px-3 py-2 rounded hover:bg-gray-100">Employers</a>
-        <a class="block px-3 py-2 rounded hover:bg-gray-100">Jobs</a>
-        <a class="block px-3 py-2 rounded hover:bg-gray-100">Roles</a>
-
-        <a class="block px-3 py-2 rounded bg-red-50 text-red-700 font-semibold">
-            Settings
-        </a>
-
-        <a class="block px-3 py-2 rounded hover:bg-gray-100">Logout</a>
-    </nav>
-
-    <!-- USER -->
-    <div class="p-4 border-t flex items-center gap-3 bg-red-50 m-3 rounded-lg">
-        <div class="w-8 h-8 bg-red-200 rounded-full"></div>
-        <div>
-            <p class="text-sm font-bold text-red-900">Alex Hiraya</p>
-            <p class="text-xs text-gray-500">Super Admin</p>
-        </div>
-    </div>
-
-</aside>
-
-        <div id="overlay"
-            class="fixed inset-0 bg-black bg-opacity-30 hidden z-30 md:hidden"
-            onclick="toggleSidebar()">
-        </div>
-
-    <!-- MAIN -->
     <div class="flex-1 flex flex-col">
 
-        <!-- TOPBAR -->
         <header class="bg-white px-4 py-3 flex justify-between items-center border-b">
 
-    <!-- LEFT -->
-    <div class="flex items-center gap-3">
+            <div class="flex items-center gap-3">
+                <button onclick="toggleSidebar()" class="md:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
 
-        <!-- MENU BUTTON -->
-        <button onclick="toggleSidebar()" class="md:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" 
-                class="w-6 h-6 text-gray-700" 
-                fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-        </button>
+                <input id="settingsSearch" type="text" placeholder="Search settings..."
+                    class="w-40 sm:w-64 md:w-80 px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-black">
+            </div>
 
-        <input type="text" placeholder="Search settings..."
-            class="w-40 sm:w-64 md:w-80 px-3 py-2 border rounded-lg text-sm">
-    </div>
+            <div class="flex items-center gap-3">
+                <span class="text-sm font-semibold text-gray-700 hidden sm:block">Super Admin</span>
+                <img src="https://via.placeholder.com/35" class="w-8 h-8 rounded-full" alt="Admin Avatar">
+            </div>
 
-    <!-- RIGHT -->
-    <div class="flex items-center gap-3">
-        <span class="text-sm font-semibold text-gray-700 hidden sm:block">
-            Super Admin
-        </span>
-        <img src="https://via.placeholder.com/35" class="w-8 h-8 rounded-full">
-    </div>
+        </header>
 
-</header>
-
-        <!-- CONTENT -->
         <main class="p-4 overflow-y-auto">
 
-            <!-- TITLE -->
             <h1 class="text-xl font-bold text-gray-800">System Settings</h1>
-            <p class="text-sm text-gray-500 mb-6">
-                Global configuration for your platform's branding, security, and operation.
-            </p>
+            <p class="text-sm text-gray-500 mb-6">Global configuration for your platform's branding, security, and operation.</p>
 
-            <!-- SYSTEM IDENTITY -->
-            <div class="bg-white p-5 rounded-xl border mb-4">
+            <div class="settings-card bg-white p-5 rounded-xl border mb-4">
                 <h2 class="font-semibold text-gray-800 mb-4">System Identity</h2>
 
                 <div class="grid md:grid-cols-2 gap-4">
-                    <input type="text" value="HIRAYA PURSUITS"
-                        class="border p-2 rounded-lg text-sm">
+                    <div>
+                        <label class="text-xs text-gray-500 block mb-1">System Name</label>
+                        <input id="systemName" type="text" value="HIRAYA PURSUITS" class="w-full border p-2 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-black focus:border-black">
+                    </div>
 
-                    <input type="text" placeholder="Website Title"
-                        class="border p-2 rounded-lg text-sm">
+                    <div>
+                        <label class="text-xs text-gray-500 block mb-1">Website Title</label>
+                        <input id="webTitle" type="text" placeholder="Website Title" class="w-full border p-2 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-black focus:border-black">
+                    </div>
 
-                    <input type="text" placeholder="Tagline"
-                        class="border p-2 rounded-lg text-sm md:col-span-2">
+                    <div class="md:col-span-2">
+                        <label class="text-xs text-gray-500 block mb-1">Tagline</label>
+                        <input type="text" placeholder="Tagline" class="w-full border p-2 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-black focus:border-black">
+                    </div>
                 </div>
             </div>
 
-            <!-- BRANDING -->
-            <div class="bg-white p-5 rounded-xl border mb-4">
+            <div class="settings-card bg-white p-5 rounded-xl border mb-4">
                 <h2 class="font-semibold text-gray-800 mb-4">Branding Assets</h2>
 
                 <div class="flex flex-col md:flex-row gap-6">
 
-                    <!-- LOGO -->
                     <div>
-                        <img src="Hiraya2.png" alt="Hiraya Logo" class="rounded-full mb-2">
-                        <button class="text-sm bg-gray-100 px-3 py-1 rounded">Upload New</button>
+                        <img src="Hiraya2.png" alt="Hiraya Logo" class="logo-preview w-16 h-16 rounded-full mb-2 object-cover bg-gray-100">
+                        
+                        <input type="file" id="logoInput" class="hidden" accept="image/*">
+                        
+                        <button onclick="document.getElementById('logoInput').click();" class="text-sm bg-gray-100 px-3 py-1 rounded hover:bg-gray-200">
+                            Upload New
+                        </button>
                     </div>
 
-                    <!-- COLORS -->
                     <div class="flex gap-6">
                         <div>
-                            <p class="text-sm">Primary Color</p>
-                            <div class="w-10 h-6 bg-red-800 rounded"></div>
+                            <p class="text-sm mb-1">Primary Color</p>
+                            <div class="w-10 h-6 bg-red-800 rounded cursor-pointer"></div>
                         </div>
 
                         <div>
-                            <p class="text-sm">Secondary Color</p>
-                            <div class="w-10 h-6 bg-gray-300 rounded"></div>
+                            <p class="text-sm mb-1">Secondary Color</p>
+                            <div style="background-color: #f4E6E6;" class="w-10 h-6 rounded cursor-pointer border border-gray-200"></div>
                         </div>
                     </div>
 
                 </div>
             </div>
 
-            <!-- WEBSITE CONFIG -->
-            <div class="bg-white p-5 rounded-xl border mb-4">
+            <div class="settings-card bg-white p-5 rounded-xl border mb-4">
                 <h2 class="font-semibold text-gray-800 mb-4">Website Configuration</h2>
 
                 <div class="space-y-4">
-
-                    <!-- TOGGLE -->
                     <div class="flex justify-between items-center">
                         <div>
                             <p class="font-medium text-sm">Maintenance Mode</p>
                             <p class="text-xs text-gray-400">Temporarily disable public access</p>
                         </div>
-                        <div class="w-10 h-5 bg-gray-300 rounded-full"></div>
+                        <div class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" id="toggleMaintenance" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer right-5"/>
+                            <label for="toggleMaintenance" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-300 cursor-pointer"></label>
+                        </div>
                     </div>
 
                     <div class="flex justify-between items-center">
-                        <p class="text-sm">Enable Registration</p>
-                        <div class="w-10 h-5 bg-red-700 rounded-full"></div>
+                        <div>
+                            <p class="text-sm font-medium">Enable Registration</p>
+                            <p class="text-xs text-gray-400">Allow new users to sign up</p>
+                        </div>
+                        <div class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" id="toggleRegistration" checked class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer right-5"/>
+                            <label for="toggleRegistration" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-300 cursor-pointer"></label>
+                        </div>
                     </div>
 
                     <div class="flex justify-between items-center">
-                        <p class="text-sm">Email Notifications</p>
-                        <div class="w-10 h-5 bg-red-700 rounded-full"></div>
+                        <div>
+                            <p class="text-sm font-medium">Email Notifications</p>
+                            <p class="text-xs text-gray-400">Send system alerts via email</p>
+                        </div>
+                        <div class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" id="toggleNotifications" checked class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer right-5"/>
+                            <label for="toggleNotifications" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-300 cursor-pointer"></label>
+                        </div>
                     </div>
-
                 </div>
             </div>
 
-            <!-- SECURITY (SCROLL TARGET) -->
-            <div class="bg-white p-5 rounded-xl border mb-6">
+            <div class="settings-card bg-white p-5 rounded-xl border mb-6">
                 <h2 class="font-semibold text-gray-800 mb-4">Security</h2>
 
                 <div class="grid md:grid-cols-2 gap-4 mb-4">
-                    <select class="border p-2 rounded-lg text-sm">
-                        <option>Moderate (Numbers, Min 8 chars)</option>
-                    </select>
+                    <div>
+                        <label class="text-xs text-gray-500 block mb-1">Password Strength</label>
+                        <select class="w-full border p-2 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-black focus:border-black">
+                            <option>Moderate (Numbers, Min 8 chars)</option>
+                            <option>Strong (Caps, Numbers, Symbols)</option>
+                        </select>
+                    </div>
 
-                    <input type="text" value="30"
-                        class="border p-2 rounded-lg text-sm">
+                    <div>
+                        <label class="text-xs text-gray-500 block mb-1">Session Timeout (Mins)</label>
+                        <input type="text" value="30" class="w-full border p-2 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-black focus:border-black">
+                    </div>
                 </div>
 
                 <div class="flex justify-between items-center">
                     <div>
                         <p class="font-medium text-sm">Two-Factor Authentication</p>
-                        <p class="text-xs text-gray-400">
-                            Force users to verify identity with a secondary device
-                        </p>
+                        <p class="text-xs text-gray-400">Force users to verify identity with a secondary device</p>
                     </div>
-                    <div class="w-10 h-5 bg-gray-300 rounded-full"></div>
+                    <div class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" id="toggle2FA" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer right-5"/>
+                        <label for="toggle2FA" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-300 cursor-pointer"></label>
+                    </div>
                 </div>
             </div>
 
-            <!-- ACTIONS -->
             <div class="flex justify-end gap-4 items-center">
-                <button class="text-gray-500 text-sm">Discard Changes</button>
+                <button id="discardBtn" class="text-gray-500 text-sm hover:text-gray-700">Discard Changes</button>
 
-                <button class="bg-red-800 text-white px-6 py-2 rounded-lg shadow-lg text-sm">
+                <button id="saveChangesBtn" class="bg-red-800 hover:bg-red-900 text-white px-6 py-2 rounded-lg shadow-lg text-sm transition-colors duration-200">
                     Save Changes
                 </button>
             </div>
