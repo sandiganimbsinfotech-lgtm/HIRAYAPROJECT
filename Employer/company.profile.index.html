@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simple company profile page for a student project dashboard.">
+    <title>Company Profile | HirayaCareer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .hover-lift {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-gray-100 antialiased">
+
+    <div class="md:hidden bg-white border-b p-4 flex justify-between items-center sticky top-0 z-50">
+        <h1 class="text-xl font-bold text-orange-600">Hiraya Pursuits</h1>
+        <button id="openSidebar" class="text-gray-600 p-2 focus:outline-none">
+            <i class="fa fa-bars text-2xl"></i>
+        </button>
+    </div>
+
+    <div class="flex min-h-screen relative">
+        
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 p-5 transform -translate-x-full transition-transform duration-300 ease-in-out md:translate-x-0 md:static shrink-0">
+            <div class="flex justify-between items-center mb-10 px-2">
+                <h1 class="text-xl font-bold text-orange-600 flex items-center gap-2">
+                                <img src="Hiraya2.png" alt="Hiraya Pursuits" class="w-12 h-12 object-contain">
+            <span class="font-bold text-red-900 text-sm">HIRAYA PURSUITS</span>
+                </h1>
+                <button id="closeSidebar" class="md:hidden text-gray-400">
+                    <i class="fa fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <nav class="flex flex-col gap-2">
+                <a href="#" class="flex items-center gap-3 text-gray-500 p-3 hover:bg-gray-50 hover:text-gray-900 rounded-xl transition-all duration-200 group">
+                    <i class="fa fa-dashboard group-hover:scale-110 transition-transform"></i> <span>Dashboard</span>
+                </a>
+                <a href="#" class="flex items-center gap-3 text-gray-500 p-3 hover:bg-gray-50 hover:text-gray-900 rounded-xl transition-all duration-200 group">
+                    <i class="fa fa-briefcase group-hover:scale-110 transition-transform"></i> <span>Job Posting</span>
+                </a>
+                <a href="#" class="flex items-center gap-3 text-gray-500 p-3 hover:bg-gray-50 hover:text-gray-900 rounded-xl transition-all duration-200 group">
+                    <i class="fa fa-users group-hover:scale-110 transition-transform"></i> <span>Applicants</span>
+                </a>
+                <a href="#" class="flex items-center justify-between text-gray-500 p-3 hover:bg-gray-50 hover:text-gray-900 rounded-xl transition-all duration-200 group">
+                    <div><i class="fa fa-envelope group-hover:scale-110 transition-transform"></i> <span class="ml-3">Messages</span></div>
+                    <span class="bg-red-600 text-white text-[10px] px-2 py-0.5 rounded-full">2</span>
+                </a>
+                <a href="#" class="flex items-center gap-3 text-red-700 bg-red-50 p-3 rounded-xl font-bold border border-red-100">
+                    <i class="fa fa-building"></i> <span>Company Profile</span>
+                </a>
+                <a href="#" class="flex items-center gap-3 text-gray-500 p-3 hover:bg-gray-50 hover:text-gray-900 rounded-xl transition-all duration-200 group">
+                    <i class="fa fa-gear group-hover:rotate-45 transition-transform"></i> <span>Settings</span>
+                </a>
+            </nav>
+        </aside>
+
+        <div id="overlay" class="fixed inset-0 bg-black/40 z-40 hidden md:hidden"></div>
+
+        <main class="flex-1 overflow-x-hidden">
+            <div class="h-48 md:h-64 bg-gray-300 relative">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/10"></div>
+            </div>
+
+            <div class="px-4 md:px-10 pb-10">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 -mt-16 flex flex-col md:flex-row items-center md:items-end gap-6 relative z-10">
+                    <div class="w-28 h-28 bg-white border border-gray-100 rounded-2xl flex items-center justify-center p-3 shadow-lg hover:rotate-3 transition-transform">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111615.png" alt="Logo" class="w-full">
+                    </div>
+                    
+                    <div class="flex-1 text-center md:text-left mb-2">
+                        <h2 class="text-3xl font-extrabold text-gray-900">Luminary Systems</h2>
+                        <p class="text-red-700 font-medium">Tech Solutions & Consulting</p>
+                        <div class="flex flex-wrap gap-4 text-gray-400 text-sm mt-3 justify-center md:justify-start">
+                            <span class="hover:text-gray-600 cursor-default"><i class="fa fa-map-marker text-red-400"></i> Singapore</span>
+                            <a href="#" class="hover:text-blue-500 transition-colors"><i class="fa fa-link"></i> luminarysystems.io</a>
+                        </div>
+                    </div>
+
+                    <button class="bg-red-800 hover:bg-red-900 text-white px-6 py-2.5 rounded-xl font-bold transition-all shadow-md active:scale-95 flex items-center gap-2 mb-2">
+                        <i class="fa fa-edit"></i> Edit Profile
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
+                    
+                    <div class="lg:col-span-2 space-y-8">
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-50">
+                            <h3 class="font-bold text-xl mb-5 flex items-center gap-2 text-gray-800">
+                                <i class="fa fa-info-circle text-red-700"></i> About Us
+                            </h3>
+                            <p class="text-gray-600 leading-relaxed mb-4">Luminary Systems began as a project by a group of second-year IT students. We help small businesses with website updates, network setup, and simple apps.</p>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+                                <div class="bg-orange-50/50 p-5 rounded-2xl border border-orange-100">
+                                    <p class="text-[10px] text-orange-400 font-black uppercase tracking-widest">Company Size</p>
+                                    <p class="font-bold text-gray-800">20 people</p>
+                                </div>
+                                <div class="bg-orange-50/50 p-5 rounded-2xl border border-orange-100">
+                                    <p class="text-[10px] text-orange-400 font-black uppercase tracking-widest">Type</p>
+                                    <p class="font-bold text-gray-800">IT services</p>
+                                </div>
+                                <div class="bg-orange-50/50 p-5 rounded-2xl border border-orange-100">
+                                    <p class="text-[10px] text-orange-400 font-black uppercase tracking-widest">Founded</p>
+                                    <p class="font-bold text-gray-800">2021</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-2xl shadow-sm">
+                            <h3 class="font-bold text-xl mb-5 flex items-center gap-2">
+                                <i class="fa fa-camera-retro text-red-700"></i> Company Culture
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="overflow-hidden rounded-xl">
+                                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978" class="w-full h-48 object-cover hover:scale-105 transition-transform duration-500" alt="Team photo">
+                                </div>
+                                <div class="overflow-hidden rounded-xl">
+                                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978" class="w-full h-48 object-cover hover:scale-105 transition-transform duration-500" alt="Team photo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8">
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-50">
+                            <h4 class="text-gray-400 font-black text-xs tracking-widest mb-5 uppercase">Social Links</h4>
+                            <div class="flex flex-col gap-3">
+                                <a href="#" class="group bg-gray-50 p-4 rounded-xl flex items-center gap-4 hover:bg-blue-50 transition-all border border-transparent hover:border-blue-100">
+                                    <i class="fa fa-globe text-gray-400 group-hover:text-blue-500 transition-colors text-lg"></i>
+                                    <span class="font-bold text-gray-700 group-hover:text-blue-700">Website</span>
+                                </a>
+                                <a href="#" class="group bg-gray-50 p-4 rounded-xl flex items-center gap-4 hover:bg-sky-50 transition-all border border-transparent hover:border-sky-100">
+                                    <i class="fab fa-linkedin text-gray-400 group-hover:text-sky-600 transition-colors text-lg"></i>
+                                    <span class="font-bold text-gray-700 group-hover:text-sky-700">LinkedIn</span>
+                                </a>
+                                <a href="#" class="group bg-gray-50 p-4 rounded-xl flex items-center gap-4 hover:bg-pink-50 transition-all border border-transparent hover:border-pink-100">
+                                    <i class="fab fa-instagram text-gray-400 group-hover:text-pink-600 transition-colors text-lg"></i>
+                                    <span class="font-bold text-gray-700 group-hover:text-pink-700">Instagram</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="bg-red-900 p-8 rounded-3xl shadow-xl relative overflow-hidden group hover-lift">
+                            <div class="relative z-10">
+                                <h4 class="text-white font-bold text-2xl mb-2">Hiring?</h4>
+                                <p class="text-red-100 text-sm mb-6 opacity-90">We are adding two junior IT assistants. This is a student project page, so some sections are still in progress.</p>
+                                <button class="w-full bg-white text-red-900 py-3 rounded-xl font-black hover:bg-red-50 transition-colors shadow-lg">
+                                    Post a Job Opening
+                                </button>
+                            </div>
+                            <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-red-800 rounded-full group-hover:scale-150 transition-transform duration-700"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const openBtn = document.getElementById('openSidebar');
+        const closeBtn = document.getElementById('closeSidebar');
+        const overlay = document.getElementById('overlay');
+
+        function toggleSidebar() {
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+        }
+
+        openBtn.addEventListener('click', toggleSidebar);
+        closeBtn.addEventListener('click', toggleSidebar);
+        overlay.addEventListener('click', toggleSidebar);
+    </script>
+
+</body>
+</html>
