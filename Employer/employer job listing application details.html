@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Details - HirayaCareer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .tab-active { background-color: #800000; color: white; }
+    </style>
+</head>
+<body class="bg-[#FCF8F8]">
+
+<div class="flex h-screen overflow-hidden">
+
+    <aside class="w-64 bg-white shadow-md hidden md:flex flex-col border-r border-gray-100">
+        <div class="p-8 flex items-center gap-2">
+            <img src="Hiraya2.png" class="w-12 h-12 rounded-full" alt="Logo">
+            <span class="text-xl font-bold text-[#800000]">HirayaCareer</span>
+        </div>
+        
+        <nav class="flex-1 px-6 space-y-2 text-sm font-medium text-gray-500">
+            <a href="#" class="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50 transition">
+                <i class="fa-solid fa-table-columns"></i> Dashboard
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 rounded-xl bg-red-50 text-[#800000] border-l-4 border-[#800000]">
+                <i class="fa-solid fa-briefcase"></i> Job Posting
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50">
+                <i class="fa-solid fa-users"></i> Applicants
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50">
+                <i class="fa-solid fa-comment-dots"></i> Messages
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50">
+                <i class="fa-solid fa-building"></i> Company Profile
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50">
+                <i class="fa-solid fa-gear"></i> Settings
+            </a>
+        </nav>
+
+        <div class="p-6 border-t border-gray-50">
+            <div class="text-[10px] text-gray-400 space-y-1">
+                <p>About · Email · Contact</p>
+                <p>Privacy · Terms</p>
+                <p class="pt-4">© 2026 HirayaCareer Inc.</p>
+            </div>
+        </div>
+    </aside>
+
+    <div id="mobileSidebar" class="fixed inset-y-0 left-0 w-64 bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 md:hidden z-50 flex flex-col">
+        <div class="p-6 text-xl font-bold text-[#800000] flex justify-between items-center border-b">
+            <img src="Hiraya2.png" class="w-12 h-12 rounded-full" alt="Logo">
+            <span>HirayaCareer</span>
+            <button onclick="toggleSidebar()" class="text-gray-400">✕</button>
+        </div>
+        <nav class="flex-1 px-4 py-4 space-y-2">
+            <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100">
+                <i class="fa-solid fa-table-columns"></i> Dashboard
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 rounded-lg bg-red-50 text-[#800000]">
+                <i class="fa-solid fa-briefcase"></i> Job Posting
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100">
+                <i class="fa-solid fa-users"></i> Applicants
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50">
+                <i class="fa-solid fa-comment-dots"></i> Messages
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50">
+                <i class="fa-solid fa-building"></i> Company Profile
+            </a>
+            <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50">
+                <i class="fa-solid fa-gear"></i> Settings
+            </a>
+
+        </nav>
+    </div>
+
+    <div class="flex-1 flex flex-col overflow-y-auto">
+        
+        <header class="bg-white border-b border-gray-100 p-4 flex items-center justify-between sticky top-0 z-30">
+            <div class="flex items-center gap-4 flex-1">
+                <button onclick="toggleSidebar()" class="md:hidden text-gray-600">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+                <div class="relative w-full max-w-md">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                    <input type="text" id="searchInput" placeholder="Search applicants..." class="w-full pl-10 pr-4 py-2 bg-gray-50 rounded-full text-sm outline-none focus:ring-1 focus:ring-red-200 border-none">
+                </div>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <i class="fa-regular fa-bell text-gray-400 cursor-pointer"></i>
+                <div class="flex items-center gap-3 pl-6 border-l border-gray-100">
+                    <div class="text-right hidden sm:block">
+                        <p class="text-xs font-bold text-gray-800">Acme Corp</p>
+                        <p class="text-[10px] text-gray-500">Administrator</p>
+                    </div>
+                    <div class="w-9 h-9 bg-teal-500 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-sm">AC</div>
+                </div>
+            </div>
+        </header>
+
+        <main class="p-4 md:p-10 max-w-6xl mx-auto w-full">
+            <nav class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">
+                JOB POSTINGS <i class="fa-solid fa-chevron-right text-[8px] mx-1"></i> DESIGN TEAM
+            </nav>
+            
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-800">Application Details: Senior Product Designer</h1>
+                    <p class="text-sm text-gray-500">Reviewing candidates for the San Francisco office position.</p>
+                </div>
+                <button class="bg-[#800000] text-white px-6 py-2 rounded-lg text-sm font-bold shadow-lg hover:bg-red-900 transition">
+                    <i class="fa-solid fa-pen text-xs mr-2"></i> Edit Job
+                </button>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm">
+                    <p class="text-[10px] font-bold text-gray-400 uppercase">Total Applicants</p>
+                    <div class="flex items-end justify-between mt-1">
+                        <span class="text-2xl font-black">124</span>
+                        <span class="text-[10px] font-bold text-emerald-500 bg-emerald-50 px-2 py-0.5 rounded-lg">+12%</span>
+                    </div>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm">
+                    <p class="text-[10px] font-bold text-gray-400 uppercase">Shortlisted</p>
+                    <div class="flex items-end justify-between mt-1">
+                        <span class="text-2xl font-black">18</span>
+                        <span class="text-[10px] font-bold text-emerald-500 bg-emerald-50 px-2 py-0.5 rounded-lg">+5%</span>
+                    </div>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm">
+                    <p class="text-[10px] font-bold text-gray-400 uppercase">Interviewing</p>
+                    <div class="flex items-end justify-between mt-1">
+                        <span class="text-2xl font-black">8</span>
+                        <span class="text-[10px] font-bold text-gray-400 bg-gray-50 px-2 py-0.5 rounded-lg">0%</span>
+                    </div>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm">
+                    <p class="text-[10px] font-bold text-gray-400 uppercase">Rejected</p>
+                    <div class="flex items-end justify-between mt-1">
+                        <span class="text-2xl font-black">45</span>
+                        <span class="text-[10px] font-bold text-red-500 bg-red-50 px-2 py-0.5 rounded-lg">-2%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
+                <div class="p-6 border-b border-gray-50 flex flex-wrap justify-between items-center gap-4">
+                    <div class="flex bg-gray-100 p-1 rounded-xl">
+                        <button onclick="toggleTab('active')" id="tab-active" class="px-6 py-1.5 rounded-lg text-xs font-bold transition tab-active">Active</button>
+                        <button onclick="toggleTab('archived')" id="tab-archived" class="px-6 py-1.5 rounded-lg text-xs font-bold transition text-gray-500">Archived</button>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <p class="text-xs text-gray-400 hidden sm:block">Showing 1-5 of 124 applicants</p>
+                        <div class="relative">
+                            <select id="statusFilter" class="appearance-none bg-white border border-gray-200 rounded-xl px-4 py-2 pr-10 text-xs font-bold text-gray-600 outline-none focus:ring-1 focus:ring-red-200">
+                                <option value="ALL">All Status</option>
+                                <option value="APPLIED">Applied</option>
+                                <option value="SHORTLISTED">Shortlisted</option>
+                                <option value="INTERVIEWING">Interviewing</option>
+                                <option value="REJECTED">Rejected</option>
+                            </select>
+                            <i class="fa-solid fa-filter absolute right-4 top-1/2 -translate-y-1/2 text-[10px] text-gray-400 pointer-events-none"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead class="bg-gray-50/50 text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                            <tr>
+                                <th class="px-8 py-4">Applicant Name</th>
+                                <th class="px-8 py-4">Status</th>
+                                <th class="px-8 py-4">Applied Date</th>
+                                <th class="px-8 py-4 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="applicantTableBody" class="divide-y divide-gray-50">
+                            </tbody>
+                    </table>
+                </div>
+
+                <div class="p-6 flex justify-between items-center border-t border-gray-50">
+                    <button class="px-4 py-2 border border-gray-200 rounded-xl text-xs font-bold text-gray-500 hover:bg-gray-50">Previous</button>
+                    <div class="flex gap-2">
+                        <button class="w-8 h-8 rounded-lg bg-[#800000] text-white text-xs font-bold">1</button>
+                        <button class="w-8 h-8 rounded-lg hover:bg-gray-50 text-xs font-bold text-gray-500">2</button>
+                        <button class="w-8 h-8 rounded-lg hover:bg-gray-50 text-xs font-bold text-gray-500">3</button>
+                    </div>
+                    <button class="px-4 py-2 border border-gray-200 rounded-xl text-xs font-bold text-gray-500 hover:bg-gray-50">Next</button>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script>
+    // DATA MOCKUP
+    const applicants = [
+        { name: "Alex Rivera", email: "alex.rivera@example.com", status: "APPLIED", date: "Oct 12, 2023", type: "active" },
+        { name: "Sam Chen", email: "sam.chen@example.com", status: "SHORTLISTED", date: "Oct 10, 2023", type: "active" },
+        { name: "Jordan Taylor", email: "jordan.t@example.com", status: "UNDER REVIEW", date: "Oct 11, 2023", type: "active" },
+        { name: "Taylor Swift", email: "taylor.s@example.com", status: "INTERVIEWING", date: "Oct 09, 2023", type: "active" },
+        { name: "Michael Doe", email: "michael.d@example.com", status: "REJECTED", date: "Oct 08, 2023", type: "active" },
+        { name: "Old Applicant", email: "old@example.com", status: "REJECTED", date: "Jan 01, 2023", type: "archived" }
+    ];
+
+    let currentTab = 'active';
+
+    function renderTable() {
+        const query = document.getElementById("searchInput").value.toLowerCase();
+        const statusFilter = document.getElementById("statusFilter").value;
+        const tbody = document.getElementById("applicantTableBody");
+        
+        tbody.innerHTML = "";
+
+        const filtered = applicants.filter(app => {
+            const matchesSearch = app.name.toLowerCase().includes(query) || app.email.toLowerCase().includes(query);
+            const matchesTab = app.type === currentTab;
+            const matchesStatus = statusFilter === "ALL" || app.status === statusFilter;
+            return matchesSearch && matchesTab && matchesStatus;
+        });
+
+        filtered.forEach(app => {
+            const statusClass = getStatusStyle(app.status);
+            tbody.innerHTML += `
+                <tr class="hover:bg-gray-50/50 transition group">
+                    <td class="px-8 py-5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-slate-200 border-2 border-white shadow-sm overflow-hidden">
+                                <img src="https://ui-avatars.com/api/?name=${app.name}&background=random" alt="">
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-gray-800">${app.name}</p>
+                                <p class="text-[11px] text-gray-400">${app.email}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-8 py-5">
+                        <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter ${statusClass}">
+                            ${app.status}
+                        </span>
+                    </td>
+                    <td class="px-8 py-5 text-xs text-gray-500 font-medium">${app.date}</td>
+                    <td class="px-8 py-5 text-right">
+                        <button class="text-gray-300 group-hover:text-gray-600 transition">
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </button>
+                    </td>
+                </tr>
+            `;
+        });
+    }
+
+    function getStatusStyle(status) {
+        switch(status) {
+            case 'APPLIED': return 'bg-blue-50 text-blue-600';
+            case 'SHORTLISTED': return 'bg-amber-50 text-amber-600';
+            case 'INTERVIEWING': return 'bg-purple-50 text-purple-600';
+            case 'REJECTED': return 'bg-red-50 text-red-600';
+            default: return 'bg-gray-50 text-gray-600';
+        }
+    }
+
+    // TOGGLE ACTIVE / ARCHIVED
+    function toggleTab(tab) {
+        currentTab = tab;
+        document.getElementById('tab-active').classList.toggle('tab-active', tab === 'active');
+        document.getElementById('tab-active').classList.toggle('text-gray-500', tab !== 'active');
+        document.getElementById('tab-archived').classList.toggle('tab-active', tab === 'archived');
+        document.getElementById('tab-archived').classList.toggle('text-gray-500', tab !== 'archived');
+        renderTable();
+    }
+
+    // SIDEBAR TOGGLE
+    function toggleSidebar() {
+        const sidebar = document.getElementById("mobileSidebar");
+        sidebar.classList.toggle("-translate-x-full");
+    }
+
+    // LISTENERS
+    document.getElementById("searchInput").addEventListener("input", renderTable);
+    document.getElementById("statusFilter").addEventListener("change", renderTable);
+
+    // INIT
+    renderTable();
+</script>
+</body>
+</html>
